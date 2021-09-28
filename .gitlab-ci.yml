@@ -9,7 +9,7 @@ build site:
       - dist
 lint: 
   image: node:9
-  stage: lint
+  stage: test
   script:
     - npm install --progress=false
     - npm run lint
