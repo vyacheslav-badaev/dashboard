@@ -1,21 +1,18 @@
+image: node:9
+before_script:
+    - npm install --progress=false
 build site:
-  image: node:9
   stage: build
   script:
-    - npm install --progress=false
     - npm run build
   artifacts:
     paths:
       - dist
 lint: 
-  image: node:9
   stage: test
   script:
-    - npm install --progress=false
     - npm run lint
 unit test:
-  image: node:9
   stage: test
   script:
-    - npm install --progress=false
     - npm run unit
