@@ -1,6 +1,9 @@
 image: node:9
 before_script:
     - npm install --progress=false
+cache:
+  paths:
+    - node_modules/
 build site:
   stage: build
   script:
