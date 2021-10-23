@@ -19,3 +19,12 @@ unit test:
   stage: test
   script:
     - npm run unit
+deploy staging:
+  stage: deploy
+  script:
+    - echo "Deploy to staging server"
+  environment:
+    name: HRO staging
+    url: http://145.24.222.141/
+  only:
+  - master
