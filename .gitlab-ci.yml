@@ -10,7 +10,7 @@ build site:
     - npm run build
   artifacts:
     paths:
-      - dist
+      - dist/
 lint: 
   stage: test
   script:
