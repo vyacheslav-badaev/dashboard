@@ -11,11 +11,13 @@ build site:
   artifacts:
     paths:
       - dist/
-lint: 
-  stage: test
+deploy staging:
+  stage: deploy
   script:
-    - npm run lint
-unit test:
-  stage: test
-  script:
-    - npm run unit
+    - apt-get install lftp
+    - lftp -e "mirror -R dist/ $HRO_STAGING_PATH" -u $HRO_STAGING_IP,$HRO_STAGING_PASSWORD $HRO_STAGING_IP 
+  environment:
+    name: HRO staging
+    url: http://145.24.222.141/
+  only:
+  - master
