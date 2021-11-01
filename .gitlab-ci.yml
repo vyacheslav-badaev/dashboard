@@ -12,9 +12,9 @@ build site:
     paths:
       - dist/
 deploy staging:
+    image: mwienk/docker-lftp
   stage: deploy
   script:
-    - apt-get install lftp
     - lftp -e "mirror -R dist/ $HRO_STAGING_PATH" -u $HRO_STAGING_IP,$HRO_STAGING_PASSWORD $HRO_STAGING_IP 
   environment:
     name: HRO staging
