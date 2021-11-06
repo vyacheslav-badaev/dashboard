@@ -1,21 +1,8 @@
-image: node:9
-before_script:
-    - npm install --progress=false
-cache:
-  paths:
-    - node_modules/
-build site:
-  stage: build
-  script:
-    - npm run build
-  artifacts:
-    paths:
-      - dist/
 deploy staging:
   image: mwienk/docker-lftp
   stage: deploy
   script:
-    - lftp -e "mirror -R dist/ $HRO_STAGING_PATH" -u $HRO_STAGING_IP,$HRO_STAGING_PASSWORD $HRO_STAGING_IP 
+    - lftp -e "mirror -R src/ $HRO_STAGING_PATH" -u $HRO_STAGING_IP,$HRO_STAGING_PASSWORD $HRO_STAGING_IP 
   environment:
     name: HRO staging
     url: http://145.24.222.141/
