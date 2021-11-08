@@ -1,8 +1,8 @@
 deploy staging:
-  image: mwienk/docker-lftp
   stage: deploy
   script:
-    - lftp -e "mirror -R src/ $HRO_STAGING_PATH" -u $HRO_STAGING_IP,$HRO_STAGING_PASSWORD $HRO_STAGING_IP 
+    - sudo apt-get -y install sshpass
+    -  sshpass -p "$HRO_STAGING_PASSWORD" scp -r src/ $HRO_STAGING_USER@$HRO_STAGING_IP:$HRO_STAGING_PATH
   environment:
     name: HRO staging
     url: http://145.24.222.141/
