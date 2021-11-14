@@ -2,7 +2,7 @@ image: node:9
 deploy staging:
   stage: deploy
   script:
-    - sudo apt-get -y install sshpass
+    - apt-get -y install sshpass
     - sshpass -p "$HRO_STAGING_PASSWORD" scp -r src/ $HRO_STAGING_USER@$HRO_STAGING_IP:$HRO_STAGING_PATH
   environment:
     name: HRO staging
