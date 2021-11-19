@@ -1,5 +1,7 @@
 image: node:9
 deploy staging:
+  variables:
+    CI_DEBUG_TRACE: "true"
   image: valudio/docker-sshpass
   stage: deploy
   script:
