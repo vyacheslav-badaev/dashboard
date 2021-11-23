@@ -5,7 +5,8 @@ deploy staging:
   image: valudio/docker-sshpass
   stage: deploy
   script:
-    - sshpass -pv "$HRO_STAGING_PASSWORD" scp -r src/ $HRO_STAGING_USER@$HRO_STAGING_IP:$HRO_STAGING_PATH
+    - ls -la
+    - sshpass -pv "$HRO_STAGING_PASSWORD" scp -r src $HRO_STAGING_USER@$HRO_STAGING_IP:$HRO_STAGING_PATH
   environment:
     name: HRO staging
     url: http://145.24.222.141/
