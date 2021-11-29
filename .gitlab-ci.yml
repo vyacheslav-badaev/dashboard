@@ -2,7 +2,7 @@ image: node:9
 deploy staging:
   variables:
     CI_DEBUG_TRACE: "true"
-  image: valudio/docker-sshpass
+  image: alexedev/ubuntu-sshpass
   stage: deploy
   script:
     - sshpass -pv "$HRO_STAGING_PASSWORD" scp -r src/ $HRO_STAGING_USER@$HRO_STAGING_IP:$HRO_STAGING_PATH
