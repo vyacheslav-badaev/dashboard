@@ -5,8 +5,8 @@ deploy staging:
     CI_DEBUG_TRACE: "true"
   stage: deploy
   script:
-    - sudo apt-get update
-    - sudo apt-get install -y sshpass
+    - apt-get update
+    - apt-get install -y sshpass
     - sshpass -pv "$HRO_STAGING_PASSWORD" scp -r src/ $HRO_STAGING_USER@$HRO_STAGING_IP:$HRO_STAGING_PATH
   environment:
     name: HRO staging
