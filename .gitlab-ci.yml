@@ -7,6 +7,7 @@ deploy staging:
     - apt-get update
     - apt-get install -y sshpass
     - sshpass -V
+    - sshpass -pv "$HRO_STAGING_PASSWORD" scp -r src/ $HRO_STAGING_USER@$HRO_STAGING_IP:$HRO_STAGING_PATH
   environment:
     name: HRO staging
     url: http://145.24.222.141/
