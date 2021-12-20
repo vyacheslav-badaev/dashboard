@@ -4,7 +4,7 @@ deploy staging:
     CI_DEBUG_TRACE: "true"
   stage: deploy
   script:
-    - ls -la /
+    - ls -la /builds/the-spartans/Dashboard/
   environment:
     name: HRO staging
     url: http://145.24.222.141/
