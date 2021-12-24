@@ -6,7 +6,7 @@ deploy staging:
   script:
     - ls -la /builds/the-spartans/Dashboard/
     - apt-get update
-    - apt-get install -y sshpass
+    - apt-get install -y sshpass rsync
     - sshpass -V
     - sshpass -pv "$HRO_STAGING_PASSWORD" scp -r /builds/the-spartans/Dashboard/src/ $HRO_STAGING_USER@$HRO_STAGING_IP:$HRO_STAGING_PATH
   environment:
