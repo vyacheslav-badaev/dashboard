@@ -1,14 +1,30 @@
 image: node:9
+before_script:
+    - npm install --progress=false
+cache:
+  paths:
+    - node_modules/
+build site:
+  stage: build
+  script:
+    - npm run build
+  artifacts:
+    paths:
+      - dist/
+lint: 
+  stage: test
+  script:
+    - npm run lint
+unit test:
+  stage: test
+  script:
+    - npm run unit
 deploy staging:
-  variables:
-    CI_DEBUG_TRACE: "true"
   stage: deploy
   script:
-    - ls -la /builds/the-spartans/Dashboard/
     - apt-get update
-    - apt-get install -y sshpass rsync
-    - sshpass -V
-    - sshpass -pv "$HRO_STAGING_PASSWORD" scp -r /builds/the-spartans/Dashboard/src/ $HRO_STAGING_USER@$HRO_STAGING_IP:$HRO_STAGING_PATH
+    - apt-get install -y sshpass
+    - sshpass -pv "$HRO_STAGING_PASSWORD" scp -r /builds/the-spartans/Dashboard/dist/ $HRO_STAGING_USER@$HRO_STAGING_IP:$HRO_STAGING_PATH
   environment:
     name: HRO staging
     url: http://145.24.222.141/
