@@ -19,14 +19,3 @@ unit test:
   stage: test
   script:
     - npm run unit
-deploy staging:
-  stage: deploy
-  script:
-    - apt-get update
-    - apt-get install -y sshpass
-    - sshpass -pv "$HRO_STAGING_PASSWORD" scp -r /builds/the-spartans/Dashboard/dist/ $HRO_STAGING_USER@$HRO_STAGING_IP:$HRO_STAGING_PATH
-  environment:
-    name: HRO staging
-    url: http://145.24.222.141/
-  only:
-  - master
