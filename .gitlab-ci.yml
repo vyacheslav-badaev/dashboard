@@ -6,7 +6,7 @@ deploy staging:
   script:
     - apt-get update
     - apt-get install -y sshpass rsync
-    - rsync -ratlz --rsh=“sshpass -p $HRO_STAGING_PASSWORD ssh -o StrictHostKeyChecking=no -l $HRO_STAGING_USER” /builds/the-spartans/Dashboard/src/  $HRO_STAGING_PATH
+    - sshpass -p ‘$HRO_STAGING_PASSWORD’ rsync --progress -avzr -e ssh/builds/the-spartans/Dashboard/src/ $HRO_STAGING_USER@$HRO_STAGING_IP:$HRO_STAGING_PATH
   environment:
     name: HRO staging
     url: http://145.24.222.141/
