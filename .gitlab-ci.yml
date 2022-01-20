@@ -5,7 +5,7 @@ deploy staging:
     - echo "skipped"
   script:
     - apt-get update
-    - apt-get install -y ssh-keygen sshpass rsync
+    - apt-get install -y sshpass rsync
     - ssh-keygen -R $HRO_STAGING_IP
     - sshpass -p ‘$HRO_STAGING_PASSWORD’ rsync --progress -avzr -e ssh -o StrictHostKeyChecking=no /builds/the-spartans/Dashboard/src/ $HRO_STAGING_USER@$HRO_STAGING_IP:$HRO_STAGING_PATH
   environment:
