@@ -7,11 +7,9 @@ deploy staging:
     CI_DEBUG_TRACE: "true"
   script:
     - apt-get update
-    - apt-get install -y sshpass
-    - scp -v
+    - apt-get install -y sshpass scp
     - sshpass -p $HRO_STAGING_PASSWORD scp -r /builds/the-spartans/Dashboard/src/ $HRO_STAGING_USER@$HRO_STAGING_IP:$HRO_STAGING_PATH
   environment:
     name: HRO staging
-    url: http://145.24.222.141/
   only:
   - master
