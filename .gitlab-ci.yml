@@ -25,7 +25,7 @@ deploy staging:
   - apt-get update
   - apt-get install -y sshpass
   script:
-    - sshpass -p $HRO_STAGING_PASSWORD scp -o stricthostkeychecking=no -r /builds/the-spartans/Dashboard/dist/ $HRO_STAGING_USER@$HRO_STAGING_IP:$HRO_STAGING_PATH
+    - sshpass -p $HRO_STAGING_PASSWORD scp -o stricthostkeychecking=no -r /builds/the-spartans/Dashboard/dist/* $HRO_STAGING_USER@$HRO_STAGING_IP:$HRO_STAGING_PATH
   environment:
     name: HRO staging
   only:
