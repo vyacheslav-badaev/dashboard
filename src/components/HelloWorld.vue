@@ -7,7 +7,7 @@
         <a
           href="https:          target="_blank"
         >
-          Core Docs test
+          Core Docs
         </a>
       </li>
       <li>
