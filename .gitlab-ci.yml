@@ -19,7 +19,7 @@ unit test:
   stage: test
   script:
     - npm run unit
-deploy HRO staging:
+deploy staging (hro):
   stage: deploy
   before_script:
   - apt-get update
