@@ -40,8 +40,7 @@
     </v-flex>
     <v-flex d-flex xs12 sm6 md2 child-flex>
       <v-card color="green lighten-2" dark>
-        <v-card-text
-          v-text="lorem.slice(0, 90)">
+        <v-card-text v-text="lorem.slice(0, 70)">
         </v-card-text>
       </v-card>
     </v-flex>
