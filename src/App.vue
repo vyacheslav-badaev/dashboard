@@ -47,9 +47,6 @@ export default {
         {icon: 'supervisor_account', text: 'Admins', link: 'todo'}
       ]
     }
-  },
-  created () {
-    console.log(process.env.VERSION)
   }
 }
 </script>
