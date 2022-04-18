@@ -11,6 +11,11 @@
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
+      <v-footer app>
+        <div class="center">
+          {{demotext}}
+        </div>
+      </v-footer>
     </v-navigation-drawer>
     <v-toolbar app fixed :clipped-left="$vuetify.breakpoint.lgAndUp">
       <v-toolbar-side-icon @click.stop="drawer = !drawer" />
@@ -46,6 +51,11 @@ export default {
         {icon: 'room_service', text: 'Servicedesk Employees', link: 'todo'},
         {icon: 'supervisor_account', text: 'Admins', link: 'todo'}
       ]
+    }
+  },
+  computed: {
+    demotext () {
+      return 'Build on ' + new Date(parseInt(process.env.BUILD_TIME_UNIX_TIMESTAMP)) + ' with commit hash ' + process.env.BUILD_TIME_COMMIT_HASH
     }
   }
 }
