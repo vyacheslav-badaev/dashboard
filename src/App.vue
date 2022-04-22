@@ -1,33 +1,3 @@
 <template>
-  <v-app>
-    <Navigation />
-    <v-content>
-      <v-container fluid grid-list-xl>
-        <router-view />
-      </v-container>
-      <v-snackbar v-model="snackbar">
-        {{buildInfo}}
-      </v-snackbar>
-    </v-content>
-  </v-app>
+  <router-view />
 </template>
-<script>
-import Navigation from './components/layout/Navigation'
-export default {
-  name: 'App',
-  components: {
-    Navigation
-  },
-  data () {
-    return {
-      title: 'Spartan Dashboard',
-      snackbar: true
-    }
-  },
-  computed: {
-    buildInfo () {
-      return 'Build on ' + new Date(parseInt(process.env.BUILD_TIME_UNIX_TIMESTAMP)).toLocaleString() + ' from commit ' + process.env.BUILD_TIME_COMMIT_HASH.slice(0, 8)
-    }
-  }
-}
-</script>

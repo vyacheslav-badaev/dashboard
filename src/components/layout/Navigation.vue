@@ -35,16 +35,18 @@
           </v-list-tile-content>
         </v-list-tile>
         <v-divider/>
-        <v-list-tile avatar>
+        <v-list-tile avatar class="pt-2">
           <v-list-tile-avatar>
             <img src="https:          </v-list-tile-avatar>
           <v-list-tile-content>
             <v-list-tile-title>John Doe</v-list-tile-title>
           </v-list-tile-content>
           <v-list-tile-action>
+            <router-link :to="{name: 'Login'}">
             <v-btn icon>
               <v-icon>exit_to_app</v-icon>
             </v-btn>
+            </router-link>
           </v-list-tile-action>
         </v-list-tile>
       </v-list>
