@@ -7,7 +7,7 @@
             <img src="./../../assets/logos/spear/spear-logo.png" >
           </v-list-tile-avatar>
           <v-list-tile-content>
-            <v-list-tile-title>{{title}}</v-list-tile-title>
+            <v-list-tile-title><b>{{title}}</b></v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
       </v-list>

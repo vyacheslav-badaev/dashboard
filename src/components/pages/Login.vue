@@ -26,7 +26,7 @@
               </v-card-text>
               <v-divider/>
               <v-card-text>
-                <v-form lazy-validation v-model="valid" ref="loginForm">
+                <v-form v-model="valid" ref="loginForm">
                   <v-text-field color="red accent-4" prepend-icon="person" v-model="username" :counter=10 :rules="usernameRules" name="username" label="Username" type="text" required />
                   <v-text-field color="red accent-4" prepend-icon="lock" v-model="password" name="password" :rules="passwordRules" label="Password" id="password" type="password" required />
                 </v-form>
@@ -34,16 +34,16 @@
               <v-card-actions>
                 <v-spacer></v-spacer>
                 <v-btn class="white--text" outline @click="clear" color="red accent-4">Clear</v-btn>
-                <v-btn class="white--text" @click="submit" :loading="loading" color="red accent-4">Login</v-btn>
+                <v-btn class="white--text" @click="submit" :loading="loading" color="red accent-4" :disabled="!valid">Login</v-btn>
               </v-card-actions>
             </v-card>
           </v-flex>
         </v-layout>
       </v-container>
     </v-content>
-    <v-snackbar bottom right multi-line v-model="snackbar">
+    <v-snackbar bottom right multi-line color="red accent-4" v-model="snackbar">
       {{snackbarMessage}}
-      <v-btn flat color="red accent-4" @click.native="snackbar = false">Close</v-btn>
+      <v-btn flat color="" @click.native="snackbar = false">Close</v-btn>
     </v-snackbar>
   </v-app>
 </template>
@@ -70,7 +70,7 @@ export default {
       ],
       valid: false,
       loading: false,
-      snackbar: true,
+      snackbar: false,
       snackbarMessage: ''
     }
   },
@@ -104,7 +104,7 @@ export default {
     }
   },
   created () {
-    this.snackbarMessage = this.buildInfo
+    this.setSnackbarMessage(this.buildInfo)
   }
 }
 </script>
