@@ -53,7 +53,7 @@ export default {
   name: 'Login',
   data () {
     return {
-      title: 'Spartan Dashboard',
+      title: 'Spartan Account',
       infoBlocks: [
         {icon: 'lock_outline', header: 'Authentication', text: 'Login with your Rotterdam University username and password.'},
         {icon: 'security', header: 'Security', text: 'For security reasons, please log out and exit your web browser when you are done accessing services that require authentication!'}

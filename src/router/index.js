@@ -14,18 +14,19 @@ export default new Router({
     },
     {
       path: '/',
-      component: Layout,
       name: 'Layout',
+      component: Layout,
       children: [
         {
-          path: '',
-          component: Demo,
-          name: 'Demo'
+          path: '/',
+          name: 'Demo',
+          component: Demo
         }
       ]
     },
     {
       path: '*',
+      name: 'NotFound',
       component: NotFound
     }
   ]
