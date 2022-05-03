@@ -37,12 +37,16 @@
         <v-divider/>
         <v-list-tile avatar class="pt-2">
           <v-list-tile-avatar>
-            <img src="https:          </v-list-tile-avatar>
+            <v-avatar size="40" class="grey darken-2">
+              <span class="white--text">{{initials}}</span>
+            </v-avatar>
+          </v-list-tile-avatar>
           <v-list-tile-content>
-            <v-list-tile-title>John Doe</v-list-tile-title>
+            <v-list-tile-title>{{username}}</v-list-tile-title>
+            <v-list-tile-sub-title>{{usergroup}}</v-list-tile-sub-title>
           </v-list-tile-content>
           <v-list-tile-action>
-            <router-link :to="{name: 'Login'}">
+            <router-link tag="button" :to="{name: 'Login'}">
             <v-btn icon>
               <v-icon>exit_to_app</v-icon>
             </v-btn>
@@ -60,6 +64,8 @@ export default {
     return {
       mini: true,
       title: 'Spartan Dashboard',
+      username: 'John Doe',
+      usergroup: 'Admin',
       items: [
         { title: 'Dashboard', icon: 'dashboard' },
         { title: 'Calender', icon: 'view_day' },
@@ -68,6 +74,11 @@ export default {
         { title: 'Servicedesk employees', icon: 'ac_unit' },
         { title: 'Admins', icon: 'verified_user' }
       ]
+    }
+  },
+  computed: {
+    initials () {
+      return this.username.match(/[A-Z]/g).join('')
     }
   }
 }

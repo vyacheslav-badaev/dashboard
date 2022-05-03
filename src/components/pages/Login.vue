@@ -79,7 +79,15 @@ export default {
       this.hideSnackbar()
       this.loading = true
       if (this.$refs.loginForm.validate()) {
-        this.setSnackbarMessage('submitting')
+        this.loading = true
+        setTimeout(() => {
+          this.loading = false
+          if (this.password === 'hunter2') {
+            this.$router.push({name: 'Demo'})
+          } else {
+            this.setSnackbarMessage('You have entered an invalid username and/or password')
+          }
+        }, 1000)
       }
     },
     clear () {
@@ -97,10 +105,10 @@ export default {
   },
   computed: {
     buildInfo () {
-      return 'Application build on ' +
+      return 'Build on ' +
         new Date(parseInt(process.env.BUILD_TIME_UNIX_TIMESTAMP)).toLocaleString() +
         ' (' + moment(parseInt(process.env.BUILD_TIME_UNIX_TIMESTAMP)).fromNow() + ') ' +
-        ' from commit ' + process.env.BUILD_TIME_COMMIT_HASH.slice(0, 8)
+        ' from commit #' + process.env.BUILD_TIME_COMMIT_HASH.slice(0, 8)
     }
   },
   created () {
