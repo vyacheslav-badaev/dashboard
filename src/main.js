@@ -6,12 +6,14 @@ import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import Raven from 'raven-js'
 import RavenVue from 'raven-js/plugins/vue'
-if (process.env.NODE_ENV === 'production') {
-  Raven
-    .config('https:
-    .addPlugin(RavenVue, Vue)
-    .install()
+if (process.env.NODE_ENV === 'dev') {
+  Raven.setShouldSendCallback(() => { return false })
+  Raven.isSetup = () => { return true }
 }
+Raven
+  .config('https:
+  .addPlugin(RavenVue, Vue)
+  .install()
 Vue.use(Vuetify)
 Vue.config.productionTip = false
 new Vue({
