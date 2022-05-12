@@ -1,0 +1,4 @@
+export const INCREASE_COUNTER = 'INCREASE_COUNTER'
+export default {
+  INCREASE_COUNTER
+}

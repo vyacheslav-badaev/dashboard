@@ -13,7 +13,7 @@
         <v-flex d-flex>
           <v-card color="indigo" dark>
             <v-card-text
-              v-text="lorem.slice(0, 70)">
+              v-text="lorem.slice(0, 40)">
             </v-card-text>
           </v-card>
         </v-flex>
