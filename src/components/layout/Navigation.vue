@@ -1,6 +1,6 @@
 <template>
   <v-navigation-drawer app permanent :mini-variant="mini" class="">
-    <v-toolbar class="transparent">
+    <v-toolbar class="transparent" :v-ripple="false">
       <v-list class="pa-0">
         <v-list-tile avatar>
           <v-list-tile-avatar size="48">
@@ -13,7 +13,7 @@
       </v-list>
     </v-toolbar>
     <v-list class="pt-3">
-      <v-list-tile v-for="item in items" :key="item.title" @click="item.title">
+      <v-list-tile v-for="item in items" :key="item.title" :to="item.link" active-class="red--text text--darken-3">
         <v-list-tile-action>
           <v-icon>{{ item.icon }}</v-icon>
         </v-list-tile-action>

@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Login from '@/components/pages/Login'
 import Layout from '@/components/Layout'
 import NotFound from '@/components/pages/NotFound'
+import StudentsOverview from '@/components/pages/students/Overview'
 import Demo from '@/components/Demo'
 Vue.use(Router)
 export default new Router({
@@ -21,6 +22,11 @@ export default new Router({
           path: '/',
           name: 'Demo',
           component: Demo
+        },
+        {
+          path: '/students',
+          name: 'Students',
+          component: StudentsOverview
         }
       ]
     },

@@ -60,8 +60,9 @@ export default {
     return {
       lorem: `Lorem ipsum dolor sit amet, mel at clita quando. Te sit oratio vituperatoribus, nam ad ipsum posidonium mediocritatem, explicari dissentiunt cu mea. Repudiare disputationi vim in, mollis iriure nec cu, alienum argumentum ius ad. Pri eu justo aeque torquatos.`
     }
+  },
+  created () {
+    this.$store.dispatch('setToolbarTitle', this.$store.state.ui.DemoToolbarTitle)
   }
 }
 </script>
-<style scoped>
-</style>

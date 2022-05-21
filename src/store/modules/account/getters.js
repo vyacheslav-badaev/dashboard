@@ -1,8 +1,5 @@
 export default {
-  getUsername (state, getters) {
-    return () => state.username
-  },
-  getUsergroup (state, getters) {
-    return () => state.usergroup
+  isLoggedIn (state, getters) {
+    return () => !!state.username
   }
 }
