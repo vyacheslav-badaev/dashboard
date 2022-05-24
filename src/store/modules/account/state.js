@@ -1,4 +1,4 @@
 export default () => ({
-  username: 'Anon',
+  username: '',
   usergroup: 'No group'
 })

@@ -7,7 +7,7 @@ export default () => ({
   toolbarTitle: '',
   navigationTitle: 'Spartan Dashboard',
   navigationItems: [
-    { title: 'Dashboard', icon: 'dashboard', link: '/dashboard' },
+    { title: 'Dashboard', icon: 'dashboard', link: '/' },
     { title: 'Calender', icon: 'view_day', link: '/calender' },
     { title: 'Students', icon: 'school', link: '/students' },
     { title: 'Teachers', icon: 'supervisor_account', link: '/teachers' },

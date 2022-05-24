@@ -1,5 +1,5 @@
 export default {
-  isLoggedIn (state, getters) {
-    return () => !!state.username
+  isAuthenticated (state, getters) {
+    return () => state.username.length
   }
 }

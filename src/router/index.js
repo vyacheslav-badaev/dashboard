@@ -1,39 +1,64 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Login from '@/components/pages/Login'
-import Layout from '@/components/Layout'
 import NotFound from '@/components/pages/NotFound'
-import StudentsOverview from '@/components/pages/students/Overview'
+import Layout from '@/components/Layout'
+import Wrapper from '@/components/layout/Wrapper'
+import StudentsOverview from '@/components/pages/Students/Overview'
 import Demo from '@/components/Demo'
 Vue.use(Router)
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: '/login',
       name: 'Login',
-      component: Login
+      component: Login,
+      meta: { requiresAuth: false }
     },
     {
       path: '/',
-      name: 'Layout',
       component: Layout,
+      meta: { requiresAuth: true },
       children: [
         {
           path: '/',
           name: 'Demo',
-          component: Demo
+          component: Demo,
+          meta: { requiresAuth: true }
         },
         {
           path: '/students',
-          name: 'Students',
-          component: StudentsOverview
+          component: Wrapper,
+          meta: { requiresAuth: true },
+          children: [
+            {
+              path: '',
+              name: 'StudentsOverview',
+              component: StudentsOverview,
+              meta: { requiresAuth: true }
+            },
+            {
+              path: 'create',
+              name: 'StudentsCreate',
+              component: Demo,
+              meta: { requiresAuth: true }
+            },
+            {
+              path: ':id',
+              name: 'StudentsDetails',
+              component: Demo,
+              meta: { requiresAuth: true }
+            }
+          ]
         }
       ]
     },
     {
       path: '*',
       name: 'NotFound',
-      component: NotFound
+      component: NotFound,
+      meta: { requiresAuth: false }
     }
   ]
 })
+export default (router)
