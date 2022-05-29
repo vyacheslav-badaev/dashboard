@@ -18,6 +18,7 @@ const router = new Router({
     {
       path: '/',
       component: Layout,
+      name: 'Layout',
       meta: { requiresAuth: true },
       children: [
         {
@@ -29,6 +30,7 @@ const router = new Router({
         {
           path: '/students',
           component: Wrapper,
+          name: 'StudentWrapper',
           meta: { requiresAuth: true },
           children: [
             {

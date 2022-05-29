@@ -62,7 +62,7 @@ export default {
     }
   },
   created () {
-    this.$store.dispatch('setToolbarTitle', this.$store.state.ui.DemoToolbarTitle)
+    this.$store.dispatch('ui/setToolbarTitle', this.$store.state.ui.DemoToolbarTitle)
   }
 }
 </script>
