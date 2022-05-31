@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Login from '@/components/pages/Login'
-import NotFound from '@/components/pages/NotFound'
-import Layout from '@/components/Layout'
-import Wrapper from '@/components/layout/Wrapper'
+import Login from '@/components/pages/Onepage/Login'
+import NotFound from '@/components/pages/Onepage/NotFound'
+import DashboardLayout from '@/components/layout/Dashboard'
+import EmptyLayout from '@/components/layout/Empty'
 import StudentsOverview from '@/components/pages/Students/Overview'
 import Demo from '@/components/Demo'
 Vue.use(Router)
@@ -17,7 +17,7 @@ const router = new Router({
     },
     {
       path: '/',
-      component: Layout,
+      component: DashboardLayout,
       name: 'Layout',
       meta: { requiresAuth: true },
       children: [
@@ -29,7 +29,7 @@ const router = new Router({
         },
         {
           path: '/students',
-          component: Wrapper,
+          component: EmptyLayout,
           name: 'StudentWrapper',
           meta: { requiresAuth: true },
           children: [

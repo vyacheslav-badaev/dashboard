@@ -7,7 +7,7 @@
             <v-card class="elevation-20">
               <v-toolbar dark color="red accent-4">
                 <v-list-tile-avatar size=48>
-                <img src="./../../assets/logos/spear/spear-logo.png" >
+                  <img src="./../../../assets/logos/spear/spear-logo.png" >
                 </v-list-tile-avatar>
                 <v-toolbar-title class="ml-0">{{title}}</v-toolbar-title>
               </v-toolbar>
@@ -17,7 +17,7 @@
                     <div slot="header" class="bold">
                       <v-icon class="mr-3" color="red accent-4">{{infoBlock.icon}}</v-icon>
                       {{infoBlock.header}}
-                </div>
+                    </div>
                     <v-card>
                       <v-card-text>{{infoBlock.text}}</v-card-text>
                     </v-card>
@@ -140,7 +140,7 @@ export default {
 </script>
 <style>
   #login-container {
-    background: url('./../../assets/backgrounds/rotterdam3.jpg') no-repeat;
+    background: url('./../../../assets/backgrounds/rotterdam3.jpg') no-repeat;
     background-size: cover;
   }
 </style>
