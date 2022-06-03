@@ -4,10 +4,11 @@
       <v-list class="pa-0">
         <v-list-tile avatar>
           <v-list-tile-avatar size="48">
-            <img src="../../../assets/logos/spear/spear-logo.png" >
+            <img v-if="!loading" src="../../../assets/logos/spear/spear-logo.png" >
+            <v-progress-circular v-else indeterminate color="red darken-3" />
           </v-list-tile-avatar>
           <v-list-tile-content>
-            <v-list-tile-title><b>{{title}}</b></v-list-tile-title>
+            <v-list-tile-title class="font-pacifico header-title"><h1>{{title}}</h1></v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
@@ -68,6 +69,7 @@ export default {
   data () {
     return {
       mini: true,
+      loading: false,
       title: this.$store.state.ui.navigationTitle,
       username: this.$store.state.account.username,
       usergroup: this.$store.state.account.usergroup,
@@ -81,3 +83,8 @@ export default {
   }
 }
 </script>
+<style>
+  .header-title > h1{
+    font-weight: normal;
+  }
+</style>

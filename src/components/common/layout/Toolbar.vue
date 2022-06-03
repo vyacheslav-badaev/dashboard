@@ -1,13 +1,9 @@
 <template>
   <v-toolbar app flat color="grey lighten-3">
-    <v-toolbar-title>{{title}}</v-toolbar-title>
-    <v-text-field flat solo-inverted prepend-icon="search" label="Search" clearable class="mx-5"/>
-    <v-btn icon>
-      <v-icon>apps</v-icon>
-    </v-btn>
-    <v-btn icon>
-      <v-icon>notifications</v-icon>
-    </v-btn>
+    <v-toolbar-title class="font-poiret-one"><h3><b>{{title}}</b></h3></v-toolbar-title>
+    <v-spacer />
+    <v-spacer />
+    <v-btn flat color="green">Create new Student</v-btn>
   </v-toolbar>
 </template>
 <script>

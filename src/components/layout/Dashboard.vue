@@ -2,8 +2,9 @@
   <v-app>
     <Navigation />
     <v-content class="grey lighten-3">
+      <Toolbar />
+      <v-divider class="divider-toolbar"/>
       <v-container fluid grid-list-lg>
-        <Toolbar />
         <router-view />
       </v-container>
     </v-content>
@@ -20,3 +21,8 @@ export default {
   }
 }
 </script>
+<style>
+  .divider-toolbar{
+    position: fixed;
+  }
+</style>

@@ -1,9 +1,5 @@
 <template>
-  <v-data-table
-    :headers="headers"
-    :items="items"
-    class="elevation-1"
-  >
+  <v-data-table :headers="headers" :items="items" class="elevation-1">
     <template slot="items" slot-scope="props">
       <td>{{ props.item.username }}</td>
       <td>{{ props.item.firstname }}</td>
@@ -24,14 +20,20 @@ export default {
         },
         { text: 'First name', value: 'firstname' },
         { text: 'Last name', value: 'lastname' }
-      ],
-      items: [
-        {
-          username: '0123567',
-          firstname: 'John',
-          lastname: 'Doe'
-        }
       ]
+    }
+  },
+  computed: {
+    items () {
+      let items = []
+      for (var i = 0; i < 100; i++) {
+        items.push({
+          username: Math.random().toString(36).replace(/[^a-z]+/g, ''),
+          firstname: Math.random().toString(36).replace(/[^a-z]+/g, ''),
+          lastname: Math.random().toString(36).replace(/[^a-z]+/g, '')
+        })
+      }
+      return items
     }
   },
   created () {
