@@ -1,5 +1,5 @@
 export default class {
   constructor (collection) {
-    this.collection = collection;
+    this.collection = collection
   }
 }

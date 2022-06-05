@@ -7,7 +7,7 @@
             <v-card class="elevation-20">
               <v-toolbar dark color="red accent-4">
                 <v-list-tile-avatar size=48>
-                  <img src="./../../../assets/logos/spear/spear-logo.png" >
+                  <img src="../../assets/logos/spear/spear-logo.png" >
                 </v-list-tile-avatar>
                 <v-toolbar-title class="ml-0">{{title}}</v-toolbar-title>
               </v-toolbar>
@@ -97,19 +97,24 @@ export default {
       this.submit()
     },
     submit () {
+      let self = this
       this.hideSnackbar()
       this.loading = true
       if (this.$refs.loginForm.validate()) {
         this.loading = true
-        setTimeout(() => {
-          this.loading = false
-          if (this.password === 'hunter2') {
-            this.$store.dispatch('setUsername', this.username)
-            this.$router.push({name: 'Demo'})
-          } else {
-            this.setSnackbarMessage('You have entered an invalid username and/or password')
-          }
-        }, 1000)
+        this.$store.dispatch('auth/login', {username: self.username, password: self.password})
+          .then(() => {
+            this.loading = false
+            if (this.$router.history.current.query.redirect) {
+              this.$router.push({path: this.$router.history.current.query.redirect})
+            } else {
+              this.$router.push({name: 'Demo'})
+            }
+          })
+          .catch((error) => {
+            this.loading = false
+            this.setSnackbarMessage(error.message)
+          })
       }
     },
     clear () {
@@ -134,13 +139,20 @@ export default {
     }
   },
   created () {
+    if (this.$store.state.auth.authenticated) {
+      if (this.$router.history.current.query.redirect) {
+        this.$router.push({path: this.$router.history.current.query.redirect})
+      } else {
+        this.$router.push({name: 'Demo'})
+      }
+    }
     this.setSnackbarMessage(this.buildInfo)
   }
 }
 </script>
 <style>
   #login-container {
-    background: url('./../../../assets/backgrounds/rotterdam3.jpg') no-repeat;
+    background: url('../../assets/backgrounds/rotterdam3.jpg') no-repeat;
     background-size: cover;
   }
 </style>

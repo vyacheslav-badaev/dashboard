@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Login from '@/components/pages/Onepage/Login'
-import NotFound from '@/components/pages/Onepage/NotFound'
+import store from './../store'
+import Login from '@/components/page/Login'
+import NotFound from '@/components/page/NotFound'
 import DashboardLayout from '@/components/layout/Dashboard'
 import EmptyLayout from '@/components/layout/Empty'
 import StudentsOverview from '@/components/pages/Students/Overview'
@@ -62,5 +63,15 @@ const router = new Router({
       meta: { requiresAuth: false }
     }
   ]
+})
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth) && !store.state.auth.authenticated) {
+    next({
+      name: 'Login',
+      query: { redirect: to.fullPath }
+    })
+  } else {
+    next()
+  }
 })
 export default (router)

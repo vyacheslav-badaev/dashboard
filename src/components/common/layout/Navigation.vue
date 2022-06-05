@@ -52,11 +52,9 @@
             <v-list-tile-sub-title>{{usergroup}}</v-list-tile-sub-title>
           </v-list-tile-content>
           <v-list-tile-action>
-            <router-link tag="button" :to="{name: 'Login'}">
-            <v-btn icon>
+            <v-btn icon @click="logout">
               <v-icon>exit_to_app</v-icon>
             </v-btn>
-            </router-link>
           </v-list-tile-action>
         </v-list-tile>
       </v-list>
@@ -71,14 +69,22 @@ export default {
       mini: true,
       loading: false,
       title: this.$store.state.ui.navigationTitle,
-      username: this.$store.state.account.username,
-      usergroup: this.$store.state.account.usergroup,
+      username: this.$store.state.auth.account.username,
+      usergroup: this.$store.state.auth.account.usergroup || '',
       items: this.$store.state.ui.navigationItems
     }
   },
   computed: {
     initials () {
       return this.username.match(/[A-Z]/g) ? this.username.match(/[A-Z]/g).join('') : false
+    }
+  },
+  methods: {
+    logout () {
+      this.$store.dispatch('auth/logout')
+        .then(() => {
+          this.$router.push({name: 'Login'})
+        })
     }
   }
 }

@@ -5,5 +5,8 @@ export default {
   },
   [types.LOGOUT] (state, payload) {
     state.authenticated = false
+  },
+  [types.SETACCOUNT] (state, account) {
+    state.account = account
   }
 }
