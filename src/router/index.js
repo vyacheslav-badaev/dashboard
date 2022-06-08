@@ -19,7 +19,6 @@ const router = new Router({
     {
       path: '/',
       component: DashboardLayout,
-      name: 'Layout',
       meta: { requiresAuth: true },
       children: [
         {
@@ -31,7 +30,6 @@ const router = new Router({
         {
           path: '/students',
           component: EmptyLayout,
-          name: 'StudentWrapper',
           meta: { requiresAuth: true },
           children: [
             {

@@ -5,8 +5,10 @@ export default {
   },
   [types.LOGOUT] (state, payload) {
     state.authenticated = false
+    localStorage.removeItem('account')
   },
   [types.SETACCOUNT] (state, account) {
     state.account = account
+    localStorage.setItem('account', account)
   }
 }

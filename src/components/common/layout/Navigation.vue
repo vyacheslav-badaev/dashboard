@@ -90,6 +90,9 @@ export default {
 }
 </script>
 <style>
+  .header-title{
+    overflow: visible;
+  }
   .header-title > h1{
     font-weight: normal;
   }
