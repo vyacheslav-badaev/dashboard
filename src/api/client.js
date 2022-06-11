@@ -43,6 +43,7 @@ export default class {
       setTimeout(() => {
         const response = data
         if (response) {
+          console.log(response)
           resolve(response)
         } else {
           reject(new Error('An error occured'))
@@ -87,12 +88,10 @@ export default class {
     ]
   }
   mockFind () {
-    return [
-      {
-        username: '0123456789',
-        firstname: 'John',
-        lastname: 'Doe'
-      }
-    ]
+    return {
+      username: '0123456789',
+      firstname: 'John',
+      lastname: 'Doe'
+    }
   }
 }

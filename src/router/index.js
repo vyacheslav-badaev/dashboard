@@ -6,6 +6,7 @@ import NotFound from '@/components/page/NotFound'
 import DashboardLayout from '@/components/layout/Dashboard'
 import EmptyLayout from '@/components/layout/Empty'
 import StudentsOverview from '@/components/pages/Students/Overview'
+import StudentsDetail from '@/components/pages/Students/Detail'
 import Demo from '@/components/Demo'
 Vue.use(Router)
 const router = new Router({
@@ -47,7 +48,7 @@ const router = new Router({
             {
               path: ':id',
               name: 'StudentsDetails',
-              component: Demo,
+              component: StudentsDetail,
               meta: { requiresAuth: true }
             }
           ]
