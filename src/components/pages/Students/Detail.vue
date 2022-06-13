@@ -4,7 +4,7 @@
 <script>
 import ApiForm from '../../common/forms/ApiForm'
 export default {
-  name: 'StudentsDetail',
+  name: 'StudentDetails',
   components: {
     ApiForm
   },

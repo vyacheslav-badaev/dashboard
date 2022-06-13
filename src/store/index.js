@@ -6,7 +6,11 @@ import mutations from './mutations'
 import actions from './actions'
 import ui from './modules/ui'
 import auth from './modules/auth'
+import calender from './modules/api/calender'
 import students from './modules/api/students'
+import teachers from './modules/api/teachers'
+import servicedesk from './modules/api/servicedesk'
+import admins from './modules/api/admins'
 Vue.use(Vuex)
 export default new Vuex.Store({
   state,
@@ -16,6 +20,10 @@ export default new Vuex.Store({
   modules: {
     ui,
     auth,
-    students
+    calender,
+    students,
+    teachers,
+    servicedesk,
+    admins
   }
 })

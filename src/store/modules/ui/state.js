@@ -14,6 +14,11 @@ export default () => ({
     { title: 'Servicedesk employees', icon: 'ac_unit', link: '/servicedesk' },
     { title: 'Admins', icon: 'verified_user', link: '/admins' }
   ],
+  DashboardOverviewToolbarTitle: 'Dashboard',
+  CalenderOverviewToolbarTitle: 'All Calender Events',
   StudentsOverviewToolbarTitle: 'All Students',
+  TeachersOverviewToolbarTitle: 'All Teachers',
+  ServicedeskOverviewToolbarTitle: 'All Servicedesk Employees',
+  AdminsOverviewToolbarTitle: 'All Admins',
   DemoToolbarTitle: 'Demo'
 })
