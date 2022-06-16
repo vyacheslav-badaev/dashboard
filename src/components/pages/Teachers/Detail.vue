@@ -1,5 +1,5 @@
 <template>
-  <ApiForm module="teachers"/>
+  <ApiForm collection="teachers"/>
 </template>
 <script>
 import ApiForm from '../../common/forms/ApiForm'

@@ -1,5 +1,5 @@
 <template>
-  <ApiForm module="calender"/>
+  <ApiForm collection="calender"/>
 </template>
 <script>
 import ApiForm from '../../common/forms/ApiForm'

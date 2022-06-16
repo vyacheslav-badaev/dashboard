@@ -1,5 +1,5 @@
 <template>
-  <ApiTable module="students"/>
+  <ApiTable collection="students"/>
 </template>
 <script>
 import ApiTable from '../../common/tables/ApiTable'

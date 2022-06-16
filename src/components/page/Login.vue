@@ -3,13 +3,13 @@
     <v-content>
       <v-container fluid fill-height id="login-container">
         <v-layout align-center>
-          <v-flex xs12 sm8 offset-sm2 md6 offset-md3 lg4 offset-lg4 xl2 offset-xl5>
-            <v-card class="elevation-20">
-              <v-toolbar dark color="red accent-4">
+          <v-flex xs12 sm8 offset-sm2 md6 offset-md3 lg6 offset-lg3 xl4 offset-xl4>
+            <v-card class="elevation-20 grey lighten-3">
+              <v-toolbar dark color="grey darken-4">
                 <v-list-tile-avatar size=48>
                   <img src="../../assets/logos/spear/spear-logo.png" >
                 </v-list-tile-avatar>
-                <v-toolbar-title class="ml-0">{{title}}</v-toolbar-title>
+                <v-toolbar-title class="ml-0 font-pacifico header-title"><h3>{{title}}</h3></v-toolbar-title>
               </v-toolbar>
               <v-card-text>
                 <v-expansion-panel>
@@ -25,7 +25,7 @@
                 </v-expansion-panel>
               </v-card-text>
               <v-divider/>
-              <v-card-text>
+              <v-card-text class="white">
                 <v-form v-model="valid" ref="loginForm">
                   <v-text-field
                     color="red accent-4"
@@ -37,6 +37,7 @@
                     label="Username"
                     type="text"
                     required
+                    clearable
                   />
                   <v-text-field
                     color="red accent-4"
@@ -49,10 +50,11 @@
                     id="password"
                     type="password"
                     required
+                    clearable
                   />
                 </v-form>
               </v-card-text>
-              <v-card-actions>
+              <v-card-actions class="white">
                 <v-spacer></v-spacer>
                 <v-btn class="white--text" outline @click="clear" color="red accent-4">Clear</v-btn>
                 <v-btn class="white--text" @click="submit" :loading="loading" color="red accent-4" :disabled="!valid">Login</v-btn>
@@ -151,6 +153,12 @@ export default {
 }
 </script>
 <style>
+  .header-title{
+    overflow: visible;
+  }
+  .header-title > h3{
+    font-weight: normal;
+  }
   #login-container {
     background: url('../../assets/backgrounds/rotterdam3.jpg') no-repeat;
     background-size: cover;

@@ -1,5 +1,7 @@
 <template>
-  <ApiForm module="students"/>
+  <v-flex xs12 sm8 md8 lg6 xl6>
+    <ApiForm collection="students"/>
+  </v-flex>
 </template>
 <script>
 import ApiForm from '../../common/forms/ApiForm'

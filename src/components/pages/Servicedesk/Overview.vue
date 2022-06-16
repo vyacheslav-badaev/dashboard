@@ -1,5 +1,5 @@
 <template>
-  <ApiTable module="servicedesk"/>
+  <ApiTable collection="servicedesk"/>
 </template>
 <script>
 import ApiTable from '../../common/tables/ApiTable'
