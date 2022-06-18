@@ -63,6 +63,11 @@
           </v-flex>
         </v-layout>
       </v-container>
+      <v-footer absolute dark color="grey darken-4">
+        <v-spacer />
+        {{buildInfo}}
+        <v-spacer />
+      </v-footer>
     </v-content>
     <v-snackbar bottom right multi-line v-model="snackbar">
       {{snackbarMessage}}
@@ -137,7 +142,7 @@ export default {
       return 'Build on ' +
         new Date(parseInt(process.env.BUILD_TIME_UNIX_TIMESTAMP)).toLocaleString() +
         ' (' + moment(parseInt(process.env.BUILD_TIME_UNIX_TIMESTAMP)).fromNow() + ') ' +
-        ' from commit #' + process.env.BUILD_TIME_COMMIT_HASH.slice(0, 8)
+        ' from commit ' + process.env.BUILD_TIME_COMMIT_HASH.slice(0, 8)
     }
   },
   created () {
@@ -148,8 +153,7 @@ export default {
         this.$router.push({name: 'Demo'})
       }
     }
-    this.setSnackbarMessage(this.buildInfo)
-  }
+      }
 }
 </script>
 <style>
@@ -160,7 +164,7 @@ export default {
     font-weight: normal;
   }
   #login-container {
-    background: url('../../assets/backgrounds/rotterdam3.jpg') no-repeat;
+    background: url('../../assets/backgrounds/rotterdam4.jpg') no-repeat;
     background-size: cover;
   }
 </style>
