@@ -1,8 +1,4 @@
 image: node:9
-stages:
-  - build
-  - test
-  - deploy
 before_script:
     - npm install --progress=false
 cache:
@@ -15,7 +11,7 @@ build site:
   artifacts:
     paths:
       - dist/
-lint:
+lint: 
   stage: test
   script:
     - npm run lint

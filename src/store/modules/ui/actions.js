@@ -1,6 +1,6 @@
 import types from './mutation-types'
 export default {
-  setToolbarTitle ({ commit, getters, rootState }, title) {
-    commit(types.SET_TOOLBAR_TITLE, title)
+  increaseCounter ({ commit, getters, rootState }) {
+    commit(types.INCREASE_COUNTER)
   }
 }
