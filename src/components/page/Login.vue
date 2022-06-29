@@ -3,13 +3,13 @@
     <v-content>
       <v-container fluid fill-height id="login-container">
         <v-layout align-center>
-          <v-flex xs12 sm8 offset-sm2 md6 offset-md3 lg4 offset-lg4 xl2 offset-xl5>
-            <v-card class="elevation-20">
-              <v-toolbar dark color="red accent-4">
+          <v-flex xs12 sm8 offset-sm2 md6 offset-md3 lg6 offset-lg3 xl4 offset-xl4>
+            <v-card class="elevation-20 grey lighten-3">
+              <v-toolbar dark color="grey darken-4">
                 <v-list-tile-avatar size=48>
-                <img src="./../../assets/logos/spear/spear-logo.png" >
+                  <img src="../../assets/logos/spear/spear-logo.png" >
                 </v-list-tile-avatar>
-                <v-toolbar-title class="ml-0">{{title}}</v-toolbar-title>
+                <v-toolbar-title class="ml-0 font-pacifico header-title"><h3>{{title}}</h3></v-toolbar-title>
               </v-toolbar>
               <v-card-text>
                 <v-expansion-panel>
@@ -17,7 +17,7 @@
                     <div slot="header" class="bold">
                       <v-icon class="mr-3" color="red accent-4">{{infoBlock.icon}}</v-icon>
                       {{infoBlock.header}}
-                </div>
+                    </div>
                     <v-card>
                       <v-card-text>{{infoBlock.text}}</v-card-text>
                     </v-card>
@@ -25,7 +25,7 @@
                 </v-expansion-panel>
               </v-card-text>
               <v-divider/>
-              <v-card-text>
+              <v-card-text class="white">
                 <v-form v-model="valid" ref="loginForm">
                   <v-text-field
                     color="red accent-4"
@@ -37,6 +37,7 @@
                     label="Username"
                     type="text"
                     required
+                    clearable
                   />
                   <v-text-field
                     color="red accent-4"
@@ -49,10 +50,11 @@
                     id="password"
                     type="password"
                     required
+                    clearable
                   />
                 </v-form>
               </v-card-text>
-              <v-card-actions>
+              <v-card-actions class="white">
                 <v-spacer></v-spacer>
                 <v-btn class="white--text" outline @click="clear" color="red accent-4">Clear</v-btn>
                 <v-btn class="white--text" @click="submit" :loading="loading" color="red accent-4" :disabled="!valid">Login</v-btn>
@@ -61,6 +63,11 @@
           </v-flex>
         </v-layout>
       </v-container>
+      <v-footer absolute dark color="grey darken-4">
+        <v-spacer />
+        {{buildInfo}}
+        <v-spacer />
+      </v-footer>
     </v-content>
     <v-snackbar bottom right multi-line v-model="snackbar">
       {{snackbarMessage}}
@@ -97,19 +104,24 @@ export default {
       this.submit()
     },
     submit () {
+      let self = this
       this.hideSnackbar()
       this.loading = true
       if (this.$refs.loginForm.validate()) {
         this.loading = true
-        setTimeout(() => {
-          this.loading = false
-          if (this.password === 'hunter2') {
-            this.$store.dispatch('setUsername', this.username)
-            this.$router.push({name: 'Demo'})
-          } else {
-            this.setSnackbarMessage('You have entered an invalid username and/or password')
-          }
-        }, 1000)
+        this.$store.dispatch('auth/login', {username: self.username, password: self.password})
+          .then(() => {
+            this.loading = false
+            if (this.$router.history.current.query.redirect) {
+              this.$router.push({path: this.$router.history.current.query.redirect})
+            } else {
+              this.$router.push({name: 'Demo'})
+            }
+          })
+          .catch((error) => {
+            this.loading = false
+            this.setSnackbarMessage(error.message)
+          })
       }
     },
     clear () {
@@ -130,17 +142,29 @@ export default {
       return 'Build on ' +
         new Date(parseInt(process.env.BUILD_TIME_UNIX_TIMESTAMP)).toLocaleString() +
         ' (' + moment(parseInt(process.env.BUILD_TIME_UNIX_TIMESTAMP)).fromNow() + ') ' +
-        ' from commit #' + process.env.BUILD_TIME_COMMIT_HASH.slice(0, 8)
+        ' from commit ' + process.env.BUILD_TIME_COMMIT_HASH.slice(0, 8)
     }
   },
   created () {
-    this.setSnackbarMessage(this.buildInfo)
-  }
+    if (this.$store.state.auth.authenticated) {
+      if (this.$router.history.current.query.redirect) {
+        this.$router.push({path: this.$router.history.current.query.redirect})
+      } else {
+        this.$router.push({name: 'Demo'})
+      }
+    }
+      }
 }
 </script>
 <style>
+  .header-title{
+    overflow: visible;
+  }
+  .header-title > h3{
+    font-weight: normal;
+  }
   #login-container {
-    background: url('./../../assets/backgrounds/rotterdam3.jpg') no-repeat;
+    background: url('../../assets/backgrounds/rotterdam4.jpg') no-repeat;
     background-size: cover;
   }
 </style>
