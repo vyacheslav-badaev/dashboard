@@ -1,5 +1,5 @@
-import types from './mutation-types'
-import Client from '../../../api/client'
+import types from '../mutation-types'
+import Client from '../../../../api/client'
 const studentClient = new Client('students')
 export default {
   findBy ({ commit, getters, rootState }, params) {
