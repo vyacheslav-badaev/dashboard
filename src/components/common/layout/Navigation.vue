@@ -76,6 +76,7 @@ export default {
   },
   computed: {
     initials () {
+      console.log(this.$store.state.auth.account)
       return this.username.match(/[A-Z]/g) ? this.username.match(/[A-Z]/g).join('') : false
     }
   },

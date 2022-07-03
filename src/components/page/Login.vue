@@ -106,7 +106,6 @@ export default {
     submit () {
       let self = this
       this.hideSnackbar()
-      this.loading = true
       if (this.$refs.loginForm.validate()) {
         this.loading = true
         this.$store.dispatch('auth/login', {username: self.username, password: self.password})

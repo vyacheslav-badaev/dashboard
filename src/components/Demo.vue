@@ -1,64 +1,62 @@
 <template>
   <v-layout row wrap>
-    <v-flex d-flex xs12 sm6 md4>
-      <v-card color="purple" dark>
-        <v-card-title primary class="title">Lorem</v-card-title>
-        <v-card-text
-          v-text="lorem">
-        </v-card-text>
+    <v-flex d-flex xs2>
+      <v-card>
+        <LineChart :chart-data="datacollection"></LineChart>
       </v-card>
     </v-flex>
-    <v-flex d-flex xs12 sm6 md3>
-      <v-layout row wrap>
-        <v-flex d-flex>
-          <v-card color="indigo" dark>
-            <v-card-text
-              v-text="lorem.slice(0, 40)">
-            </v-card-text>
-          </v-card>
-        </v-flex>
-        <v-flex d-flex>
-          <v-layout row wrap>
-            <v-flex
-              d-flex
-              v-for="n in 2"
-              :key="n"
-              xs12
-            >
-              <v-card
-                color="red lighten-2"
-                dark
-              >
-                <v-card-text
-                  v-text="lorem.slice(0, 40)">
-                </v-card-text>
-              </v-card>
-            </v-flex>
-          </v-layout>
-        </v-flex>
-      </v-layout>
-    </v-flex>
-    <v-flex d-flex xs12 sm6 md2 child-flex>
-      <v-card color="green lighten-2" dark>
-        <v-card-text v-text="lorem.slice(0, 70)">
-        </v-card-text>
+    <v-flex d-flex xs4>
+      <v-card>
+        <LineChart :chart-data="datacollection"></LineChart>
       </v-card>
     </v-flex>
-    <v-flex d-flex xs12 sm6 md3>
-      <v-card color="blue lighten-2" dark>
-        <v-card-text
-          v-text="lorem.slice(0, 100)">
-        </v-card-text>
+    <v-flex d-flex xs2>
+      <v-card>
+        <LineChart :chart-data="datacollection"></LineChart>
       </v-card>
     </v-flex>
   </v-layout>
 </template>
 <script>
+import LineChart from './charts/LineChart.js'
 export default {
   name: 'Demo',
+  components: {
+    LineChart
+  },
   data () {
     return {
-      lorem: `Lorem ipsum dolor sit amet, mel at clita quando. Te sit oratio vituperatoribus, nam ad ipsum posidonium mediocritatem, explicari dissentiunt cu mea. Repudiare disputationi vim in, mollis iriure nec cu, alienum argumentum ius ad. Pri eu justo aeque torquatos.`
+      datacollection: null
+    }
+  },
+  mounted () {
+    this.fillData()
+  },
+  methods: {
+    fillData () {
+      this.datacollection = {
+        labels: [this.getRandomInt(), this.getRandomInt()],
+        datasets: [
+          {
+            label: 'Data One',
+            backgroundColor: '#f87979',
+            data: [this.getRandomInt(), this.getRandomInt()]
+          },
+          {
+            label: 'Data One',
+            backgroundColor: '#f87979',
+            data: [this.getRandomInt(), this.getRandomInt()]
+          },
+          {
+            label: 'Data One',
+            backgroundColor: '#f87979',
+            data: [this.getRandomInt(), this.getRandomInt()]
+          }
+        ]
+      }
+    },
+    getRandomInt () {
+      return Math.floor(Math.random() * (50 - 5 + 1)) + 5
     }
   },
   created () {

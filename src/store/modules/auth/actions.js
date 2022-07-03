@@ -1,5 +1,8 @@
 import types from './mutation-types'
 export default {
+  check ({ commit, getters, rootState }) {
+    commit(types.CHECK)
+  },
   login ({ commit, getters, rootState }, payload) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
@@ -15,6 +18,5 @@ export default {
   },
   logout ({ commit, getters, rootState }) {
     commit(types.LOGOUT, null)
-    commit(types.SETACCOUNT, null)
   }
 }

@@ -14,6 +14,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 Vue.use(Vuetify)
 Vue.config.productionTip = false
+store.dispatch('auth/check')
 new Vue({
   el: '#app',
   store,
