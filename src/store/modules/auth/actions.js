@@ -1,22 +1,26 @@
+import Vue from 'vue'
 import types from './mutation-types'
 export default {
-  check ({ commit, getters, rootState }) {
-    commit(types.CHECK)
+  initialize ({ commit, getters, rootState }) {
+    commit(types.INITIALIZE)
   },
-  login ({ commit, getters, rootState }, payload) {
+  login ({ commit, getters, rootState }, params) {
     return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        if (payload.password === 'password') {
-          commit(types.LOGIN, payload)
-          commit(types.SETACCOUNT, payload)
-          resolve()
-        } else {
-          reject(new Error('Invalid username and/or password'))
-        }
-      }, 1000)
+      Vue.$axios.get('/login', {params})
+        .then(function (response) {
+          if (response.data && response.data.authenticated) {
+            commit(types.LOGIN, response.data)
+            resolve()
+          } else {
+            reject(new Error('Invalid username and/or password.'))
+          }
+        })
+        .catch(function (error) {
+          reject(new Error('Webservice is currently not available. (' + error + ')'))
+        })
     })
   },
   logout ({ commit, getters, rootState }) {
-    commit(types.LOGOUT, null)
+    commit(types.LOGOUT)
   }
 }

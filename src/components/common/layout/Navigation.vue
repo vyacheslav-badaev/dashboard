@@ -69,14 +69,13 @@ export default {
       mini: true,
       loading: false,
       title: this.$store.state.ui.navigationTitle,
-      username: this.$store.state.auth.account.username,
-      usergroup: this.$store.state.auth.account.usergroup || '',
+      username: this.$store.state.auth.username,
+      usergroup: '',
       items: this.$store.state.ui.navigationItems
     }
   },
   computed: {
     initials () {
-      console.log(this.$store.state.auth.account)
       return this.username.match(/[A-Z]/g) ? this.username.match(/[A-Z]/g).join('') : false
     }
   },

@@ -6,7 +6,7 @@ let unix_timestamp = Date.now().toString()
 unix_timestamp = "'" + unix_timestamp + "'"
 module.exports = {
   NODE_ENV: '"production"',
-  API_URL: `"https:
+  API_URL: `"http:
   BUILD_TIME_COMMIT_HASH: commit_hash,
   BUILD_TIME_UNIX_TIMESTAMP: unix_timestamp
 }

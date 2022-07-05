@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-content>
-      <v-container fluid fill-height id="login-container">
+      <v-container fluid fill-height id="login-container" class="grey lighten-3">
         <v-layout align-center>
           <v-flex xs12 sm8 offset-sm2 md6 offset-md3 lg6 offset-lg3 xl4 offset-xl4>
             <v-card class="elevation-20 grey lighten-3">
@@ -63,7 +63,7 @@
           </v-flex>
         </v-layout>
       </v-container>
-      <v-footer absolute dark color="grey darken-4">
+      <v-footer absolute color="transparent">
         <v-spacer />
         {{buildInfo}}
         <v-spacer />
@@ -86,8 +86,7 @@ export default {
       username: '',
       usernameRules: [
         v => !!v || 'Username is required',
-        v => (v && v.length >= 5) || 'Username must be 5 or more characters',
-        v => (v && v.length <= 10) || 'Username cannot exceed 10 characters'
+        v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'Username must be valid'
       ],
       password: '',
       passwordRules: [
@@ -138,10 +137,9 @@ export default {
   },
   computed: {
     buildInfo () {
-      return 'Build on ' +
+      return 'Version ' + process.env.BUILD_TIME_COMMIT_HASH.slice(0, 8) + '-' + process.env.BUILD_TIME_UNIX_TIMESTAMP + ' deployed on ' +
         new Date(parseInt(process.env.BUILD_TIME_UNIX_TIMESTAMP)).toLocaleString() +
-        ' (' + moment(parseInt(process.env.BUILD_TIME_UNIX_TIMESTAMP)).fromNow() + ') ' +
-        ' from commit ' + process.env.BUILD_TIME_COMMIT_HASH.slice(0, 8)
+        ' (' + moment(parseInt(process.env.BUILD_TIME_UNIX_TIMESTAMP)).fromNow() + ') '
     }
   },
   created () {
@@ -152,7 +150,7 @@ export default {
         this.$router.push({name: 'Demo'})
       }
     }
-      }
+  }
 }
 </script>
 <style>
@@ -165,5 +163,6 @@ export default {
   #login-container {
     background: url('../../assets/backgrounds/rotterdam4.jpg') no-repeat;
     background-size: cover;
+    background-blend-mode: hard-light;
   }
 </style>

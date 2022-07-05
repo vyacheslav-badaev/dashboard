@@ -1,4 +1,5 @@
 export default () => ({
   authenticated: false,
-  account: null
+  key: null,
+  username: null
 })
