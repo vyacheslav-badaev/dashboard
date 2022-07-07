@@ -6,6 +6,7 @@ import mutations from './mutations'
 import actions from './actions'
 import ui from './modules/ui'
 import auth from './modules/auth'
+import hr from './modules/hr'
 import calender from './modules/api/calender'
 import students from './modules/api/students'
 import teachers from './modules/api/teachers'
@@ -20,6 +21,7 @@ export default new Vuex.Store({
   modules: {
     ui,
     auth,
+    hr,
     calender,
     students,
     teachers,

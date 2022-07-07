@@ -7,6 +7,7 @@ unix_timestamp = "'" + unix_timestamp + "'"
 module.exports = {
   NODE_ENV: '"production"',
   API_URL: `"http:
+  HR_URL: `"https:
   BUILD_TIME_COMMIT_HASH: commit_hash,
   BUILD_TIME_UNIX_TIMESTAMP: unix_timestamp
 }

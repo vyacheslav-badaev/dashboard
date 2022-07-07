@@ -16,6 +16,7 @@ export default () => ({
     { title: 'Admins', icon: 'verified_user', link: '/admins' }
   ],
   DashboardOverviewToolbarTitle: 'Dashboard',
+  ScheduleOverviewToolbarTitle: 'HR Schedule',
   CalenderOverviewToolbarTitle: 'All Calender Events',
   StudentsOverviewToolbarTitle: 'All Students',
   TeachersOverviewToolbarTitle: 'All Teachers',

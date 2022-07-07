@@ -55,7 +55,7 @@
                 </v-form>
               </v-card-text>
               <v-card-actions class="white">
-                <v-spacer></v-spacer>
+                <v-spacer />
                 <v-btn class="white--text" outline @click="clear" color="red accent-4">Clear</v-btn>
                 <v-btn class="white--text" @click="submit" :loading="loading" color="red accent-4" :disabled="!valid">Login</v-btn>
               </v-card-actions>

@@ -7,7 +7,7 @@ export default {
   login ({ commit, getters, rootState }, params) {
     return new Promise((resolve, reject) => {
       Vue.$axios.get('/login', {params})
-        .then(function (response) {
+        .then((response) => {
           if (response.data && response.data.authenticated) {
             commit(types.LOGIN, response.data)
             resolve()
@@ -15,7 +15,7 @@ export default {
             reject(new Error('Invalid username and/or password.'))
           }
         })
-        .catch(function (error) {
+        .catch((error) => {
           reject(new Error('Webservice is currently not available. (' + error + ')'))
         })
     })

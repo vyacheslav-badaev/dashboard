@@ -5,6 +5,7 @@ import Login from '@/components/page/Login'
 import NotFound from '@/components/page/NotFound'
 import DashboardLayout from '@/components/layout/Dashboard'
 import EmptyLayout from '@/components/layout/Empty'
+import ScheduleOverview from '@/components/pages/Schedule/Overview'
 import CalenderOverview from '@/components/pages/Calender/Overview'
 import CalenderDetail from '@/components/pages/Calender/Detail'
 import StudentsOverview from '@/components/pages/Students/Overview'
@@ -35,6 +36,14 @@ const router = new Router({
           name: 'Demo',
           component: Demo,
           meta: { requiresAuth: true }
+        },
+        {
+          path: '/schedule',
+          component: EmptyLayout,
+          meta: { requiresAuth: true },
+          children: [
+            {path: '', name: 'ScheduleOverview', component: ScheduleOverview, meta: { requiresAuth: true }}
+          ]
         },
         {
           path: '/calender',
