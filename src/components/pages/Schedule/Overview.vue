@@ -172,7 +172,7 @@ export default {
             this.lessons = lessons
             this.loading = false
           })
-          .catch((error) => {
+          .catch(() => {
             this.lessons = []
             this.loading = false
                       })
