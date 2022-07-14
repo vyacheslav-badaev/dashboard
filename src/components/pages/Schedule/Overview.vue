@@ -62,10 +62,18 @@
     </v-flex>
     <v-flex xs2 v-for="(lesson, index) in lessons" v-bind:key="index">
       <v-card>
+        <v-card-media :src="parseLatLongImage(lesson.room)" height="200px">
+          <v-container fill-height fluid>
+            <v-layout fill-height>
+              <v-flex xs12 align-end flexbox>
+                <span class="headline">{{lesson.Text}}</span>
+              </v-flex>
+            </v-layout>
+          </v-container>
+        </v-card-media>
         <v-card-title>
           <div>
-            <span class="grey--text">{{lesson.Text}}</span><br>
-            <span>{{lesson.Subject}}</span><br>
+            <span class="grey--text">{{lesson.Subject}}</span><br>
             <span>{{lesson.Teacher}}</span><br>
             <span>{{lesson.Class}}</span>
           </div>
@@ -181,7 +189,10 @@ export default {
     parseDate (date) {
       let momentDate = moment(date, 'YYYY-MM-DD[T]HH:mm:ssZZ')
       return momentDate.format('dddd, LL') + ' (' + momentDate.fromNow() + ')'
-    }
+    },
+    parseLatLongImage (room) {
+      let latLong = room.latitude + ',' + room.longitude
+      return 'https:    }
                               },
   created () {
     this.$store.dispatch('ui/setToolbarTitle', this.$store.state.ui.ScheduleOverviewToolbarTitle)

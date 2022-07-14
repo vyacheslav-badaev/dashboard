@@ -70,7 +70,7 @@ export default {
       loading: false,
       title: this.$store.state.ui.navigationTitle,
       username: this.$store.state.auth.username,
-      usergroup: '',
+      usergroup: this.$store.getters['auth/getAccountType'],
       items: this.$store.state.ui.navigationItems
     }
   },

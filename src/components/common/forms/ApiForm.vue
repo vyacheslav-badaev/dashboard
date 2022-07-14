@@ -2,17 +2,17 @@
   <v-card>
     <v-card-title>
       <span class="headline" v-if="loading">Loading data</span>
-      <span class="headline" v-else-if="item">{{collection.charAt(0).toUpperCase() + collection.slice(1, -1) + ' ' + item.username}}</span>
-      <span class="headline" v-else>Create new {{collection.charAt(0).toUpperCase() + collection.slice(1, -1)}}</span>
+      <span class="headline" v-else-if="item && item[key]">{{collection.charAt(0).toUpperCase() + collection.slice(1) + ' ' + item[key]}}</span>
+      <span class="headline" v-else>Create new {{collection.charAt(0).toUpperCase() + collection.slice(1)}}</span>
     </v-card-title>
     <v-card-text v-if="!loading">
       <v-container grid-list-md>
-        <v-layout wrap v-for="column in columns" v-bind:key="column.text">
+        <v-layout wrap v-for="column in columns" v-bind:key="column.text" ref="fields">
           <v-flex xs12 sm4>
             <v-subheader class="text-sm-left">{{column.text}}</v-subheader>
           </v-flex>
           <v-flex xs12 sm8>
-            <v-text-field v-if="editing" :label="column.text" :value="item ? item[column.value] : ''"></v-text-field>
+            <v-text-field v-if="editing && !column.readOnly" v-model="item[column.value]" :label="column.text" :value="item && item[key] ? item[column.value] : ''" ></v-text-field>
             <v-subheader v-else-if="item" class="text-sm-right">{{item[column.value]}}</v-subheader>
           </v-flex>
         </v-layout>
@@ -28,7 +28,9 @@ export default {
       new: this._new || false,
       loading: false,
       editing: null,
+      key: this.$store.state[this.collection].primaryKey,
       columns: this.$store.state[this.collection].columns,
+      data: {},
       buttons: [
         {
           id: this._uid + this.collection + 'editButton',
@@ -36,6 +38,13 @@ export default {
           color: 'orange',
           flat: true,
           action: this.onEditButtonClick
+        },
+        {
+          id: this._uid + this.collection + 'DeleteButton',
+          title: 'Delete ' + this.collection,
+          color: 'red',
+          flat: true,
+          action: this.onDeleteButtonClick
         },
         {
           id: this._uid + this.collection + 'cancelButton',
@@ -56,7 +65,7 @@ export default {
   },
   computed: {
     item () {
-      return this.$store.state[this.collection].items.find(_item => _item.username === this.id)
+      return this.$store.state[this.collection].items.find(_item => String(_item[this.key]) === String(this.id)) || {}
     }
   },
   props: {
@@ -76,12 +85,12 @@ export default {
   methods: {
     refresh () {
       this.loading = true
-      this.$store.dispatch(this.collection + '/find', this.$router.history.current.params.id)
-        .then((response) => {
+      this.$store.dispatch(this.collection + '/find', {id: this.id})
+        .finally(() => {
           this.loading = false
-        })
-        .catch(() => {
-          this.loading = false
+          if (!this.item || (this.item && !this.item[this.key])) {
+            this.$router.push({name: this.collection.charAt(0).toUpperCase() + this.collection.slice(1) + 'Create'})
+          }
         })
     },
     onEditButtonClick () {
@@ -91,8 +100,25 @@ export default {
       this.editing = false
     },
     onSaveButtonClick () {
-      this.editing = false
+      if (this.new) {
+        this.$store.dispatch(this.collection + '/create', this.item)
+          .then((id) => {
+            this.$router.push({name: this.collection.charAt(0).toUpperCase() + this.collection.slice(1) + 'Details', params: {id}})
+          })
+                                    } else {
+        this.$store.dispatch(this.collection + '/update', this.item)
+          .then(() => {
+            this.editing = false
+            this.refresh()
+          })
+                                    }
     },
+    onDeleteButtonClick () {
+      this.$store.dispatch(this.collection + '/delete', this.item[this.key])
+        .then(() => {
+          this.$router.push({name: this.collection.charAt(0).toUpperCase() + this.collection.slice(1) + 'Overview'})
+        })
+                      },
     resetButtons () {
       const self = this
       this.buttons.forEach(function (button) {

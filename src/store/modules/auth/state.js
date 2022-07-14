@@ -1,5 +1,6 @@
 export default () => ({
   authenticated: false,
   key: null,
-  username: null
+  username: null,
+  type: null
 })

@@ -2,7 +2,7 @@
   <div>
     <v-data-table :headers="columns" :items="items" :loading="loading" class="elevation-1">
       <template slot="items" slot-scope="props">
-        <router-link tag="tr" :to="{ name: collection.charAt(0).toUpperCase() + collection.slice(1) + 'Details', params: { id: props.item.username }}">
+        <router-link tag="tr" :to="{ name: collection.charAt(0).toUpperCase() + collection.slice(1) + 'Details', params: { id: props.item[key] }}">
           <td v-for="column in columns" v-bind:key="column.value"> {{props.item[column.value]}} </td>
         </router-link>
       </template>
@@ -14,6 +14,7 @@ export default {
   data () {
     return {
       loading: false,
+      key: this.$store.state[this.collection].primaryKey,
       columns: this.$store.state[this.collection].columns,
       buttons: [
         {

@@ -5,17 +5,11 @@ import Login from '@/components/page/Login'
 import NotFound from '@/components/page/NotFound'
 import DashboardLayout from '@/components/layout/Dashboard'
 import EmptyLayout from '@/components/layout/Empty'
-import ScheduleOverview from '@/components/pages/Schedule/Overview'
 import CalenderOverview from '@/components/pages/Calender/Overview'
 import CalenderDetail from '@/components/pages/Calender/Detail'
-import StudentsOverview from '@/components/pages/Students/Overview'
-import StudentsDetail from '@/components/pages/Students/Detail'
-import TeachersOverview from '@/components/pages/Teachers/Overview'
-import TeachersDetail from '@/components/pages/Teachers/Detail'
-import ServicedeskOverview from '@/components/pages/Servicedesk/Overview'
-import ServicedeskDetail from '@/components/pages/Servicedesk/Detail'
-import AdminsOverview from '@/components/pages/Admins/Overview'
-import AdminsDetail from '@/components/pages/Admins/Detail'
+import ScheduleOverview from '@/components/pages/Schedule/Overview'
+import NotificationsOverview from '@/components/pages/Notifications/Overview'
+import NotificationsDetail from '@/components/pages/Notifications/Detail'
 import Demo from '@/components/Demo'
 Vue.use(Router)
 const router = new Router({
@@ -38,14 +32,6 @@ const router = new Router({
           meta: { requiresAuth: true }
         },
         {
-          path: '/schedule',
-          component: EmptyLayout,
-          meta: { requiresAuth: true },
-          children: [
-            {path: '', name: 'ScheduleOverview', component: ScheduleOverview, meta: { requiresAuth: true }}
-          ]
-        },
-        {
           path: '/calender',
           component: EmptyLayout,
           meta: { requiresAuth: true },
@@ -56,43 +42,21 @@ const router = new Router({
           ]
         },
         {
-          path: '/students',
+          path: '/schedule',
           component: EmptyLayout,
           meta: { requiresAuth: true },
           children: [
-            {path: '', name: 'StudentsOverview', component: StudentsOverview, meta: { requiresAuth: true }},
-            {path: 'create', name: 'StudentsCreate', component: Demo, meta: { requiresAuth: true }},
-            {path: ':id', name: 'StudentsDetails', component: StudentsDetail, meta: { requiresAuth: true }}
+            {path: '', name: 'ScheduleOverview', component: ScheduleOverview, meta: { requiresAuth: true }}
           ]
         },
         {
-          path: '/teachers',
+          path: '/notifications',
           component: EmptyLayout,
           meta: { requiresAuth: true },
           children: [
-            {path: '', name: 'TeachersOverview', component: TeachersOverview, meta: { requiresAuth: true }},
-            {path: 'create', name: 'TeachersCreate', component: Demo, meta: { requiresAuth: true }},
-            {path: ':id', name: 'TeachersDetails', component: TeachersDetail, meta: { requiresAuth: true }}
-          ]
-        },
-        {
-          path: '/servicedesk',
-          component: EmptyLayout,
-          meta: { requiresAuth: true },
-          children: [
-            {path: '', name: 'ServicedeskOverview', component: ServicedeskOverview, meta: { requiresAuth: true }},
-            {path: 'create', name: 'ServicedeskCreate', component: Demo, meta: { requiresAuth: true }},
-            {path: ':id', name: 'ServicedeskDetails', component: ServicedeskDetail, meta: { requiresAuth: true }}
-          ]
-        },
-        {
-          path: '/admins',
-          component: EmptyLayout,
-          meta: { requiresAuth: true },
-          children: [
-            {path: '', name: 'AdminsOverview', component: AdminsOverview, meta: { requiresAuth: true }},
-            {path: 'create', name: 'AdminsCreate', component: Demo, meta: { requiresAuth: true }},
-            {path: ':id', name: 'AdminsDetails', component: AdminsDetail, meta: { requiresAuth: true }}
+            {path: '', name: 'NotificationsOverview', component: NotificationsOverview, meta: { requiresAuth: true }},
+            {path: 'new', name: 'NotificationsCreate', component: NotificationsDetail, meta: { requiresAuth: true }},
+            {path: ':id', name: 'NotificationsDetails', component: NotificationsDetail, meta: { requiresAuth: true }}
           ]
         }
       ]

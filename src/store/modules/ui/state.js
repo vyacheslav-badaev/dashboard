@@ -10,17 +10,13 @@ export default () => ({
   navigationItems: [
     { title: 'Dashboard', icon: 'dashboard', link: '/' },
     { title: 'Calender', icon: 'view_day', link: '/calender' },
-    { title: 'Students', icon: 'school', link: '/students' },
-    { title: 'Teachers', icon: 'supervisor_account', link: '/teachers' },
-    { title: 'Servicedesk employees', icon: 'ac_unit', link: '/servicedesk' },
-    { title: 'Admins', icon: 'verified_user', link: '/admins' }
+    { title: 'Schedule', icon: 'today', link: '/schedule' },
+    { title: 'Notifications', icon: 'contact_support', link: '/notifications' }
   ],
   DashboardOverviewToolbarTitle: 'Dashboard',
   ScheduleOverviewToolbarTitle: 'HR Schedule',
+  NotificationsOverviewToolbarTitle: 'Notifications',
   CalenderOverviewToolbarTitle: 'All Calender Events',
-  StudentsOverviewToolbarTitle: 'All Students',
-  TeachersOverviewToolbarTitle: 'All Teachers',
-  ServicedeskOverviewToolbarTitle: 'All Servicedesk Employees',
-  AdminsOverviewToolbarTitle: 'All Admins',
+  TicketsOverviewToolbarTitle: 'All notification tickets',
   DemoToolbarTitle: 'Demo'
 })

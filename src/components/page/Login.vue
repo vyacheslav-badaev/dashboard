@@ -95,7 +95,10 @@ export default {
       valid: false,
       loading: false,
       snackbar: false,
-      snackbarMessage: ''
+      snackbarMessage: '',
+      buildInfo: 'Version ' + process.env.BUILD_TIME_COMMIT_HASH.slice(0, 8) + '-' + process.env.BUILD_TIME_UNIX_TIMESTAMP + ' deployed on ' +
+      new Date(parseInt(process.env.BUILD_TIME_UNIX_TIMESTAMP)).toLocaleString() +
+      ' (' + moment(parseInt(process.env.BUILD_TIME_UNIX_TIMESTAMP)).fromNow() + ') '
     }
   },
   methods: {
@@ -133,13 +136,6 @@ export default {
     },
     hideSnackbar () {
       this.snackbar = false
-    }
-  },
-  computed: {
-    buildInfo () {
-      return 'Version ' + process.env.BUILD_TIME_COMMIT_HASH.slice(0, 8) + '-' + process.env.BUILD_TIME_UNIX_TIMESTAMP + ' deployed on ' +
-        new Date(parseInt(process.env.BUILD_TIME_UNIX_TIMESTAMP)).toLocaleString() +
-        ' (' + moment(parseInt(process.env.BUILD_TIME_UNIX_TIMESTAMP)).fromNow() + ') '
     }
   },
   created () {
