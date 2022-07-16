@@ -11,11 +11,13 @@ export default () => ({
     { title: 'Dashboard', icon: 'dashboard', link: '/' },
     { title: 'Calender', icon: 'view_day', link: '/calender' },
     { title: 'Schedule', icon: 'today', link: '/schedule' },
-    { title: 'Notifications', icon: 'contact_support', link: '/notifications' }
+    { title: 'Notifications', icon: 'contact_support', link: '/notifications' },
+    { title: 'Rooms', icon: 'contact_support', link: '/rooms' }
   ],
   DashboardOverviewToolbarTitle: 'Dashboard',
   ScheduleOverviewToolbarTitle: 'HR Schedule',
-  NotificationsOverviewToolbarTitle: 'Notifications',
+  NotificationsOverviewToolbarTitle: 'All Notifications',
+  RoomsOverviewToolbarTitle: 'All Rooms',
   CalenderOverviewToolbarTitle: 'All Calender Events',
   TicketsOverviewToolbarTitle: 'All notification tickets',
   DemoToolbarTitle: 'Demo'

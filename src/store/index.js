@@ -8,6 +8,7 @@ import ui from './modules/ui'
 import auth from './modules/auth'
 import hr from './modules/hr'
 import notifications from './modules/api/notifications'
+import rooms from './modules/api/rooms'
 Vue.use(Vuex)
 export default new Vuex.Store({
   state,
@@ -18,6 +19,7 @@ export default new Vuex.Store({
     ui,
     auth,
     hr,
-    notifications
+    notifications,
+    rooms
   }
 })

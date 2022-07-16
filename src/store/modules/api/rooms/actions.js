@@ -6,13 +6,13 @@ export default {
       if (!params.type) {
         params.type = 'all'
       }
-      Vue.$axios.get('/notification', {params})
+      Vue.$axios.get('/rooms', {params})
         .then((response) => {
           if (response.data && response.data.status === 200) {
-            commit(types.FIND_BY, response.data.notifications)
+            commit(types.FIND_BY, response.data.rooms)
             resolve()
           } else {
-            reject(new Error('An error occurred while retrieving notifications.'))
+            reject(new Error('An error occurred while retrieving rooms.'))
           }
         })
         .catch((error) => {
@@ -25,16 +25,16 @@ export default {
       if (!params.type) {
         params.type = 'all'
       }
-      Vue.$axios.get('/notification', {params})
+      Vue.$axios.get('/rooms', {params})
         .then((response) => {
           if (response.data && response.data.status === 200) {
-            let index = response.data.notifications.findIndex(_notification => String(_notification[this.state.notifications.primaryKey]) === params.id)
+            let index = response.data.rooms.findIndex(_room => String(_room[this.state.rooms.primaryKey]) === params.id)
             if (index > -1) {
-              commit(types.FIND, response.data.notifications[index])
+              commit(types.FIND, response.data.rooms[index])
             }
             resolve()
           } else {
-            reject(new Error('An error occurred while retrieving notification' + params.id + ' .'))
+            reject(new Error('An error occurred while retrieving room' + params.id + ' .'))
           }
         })
         .catch((error) => {
@@ -44,13 +44,13 @@ export default {
   },
   create ({ commit, getters, rootState }, item) {
     return new Promise((resolve, reject) => {
-      Vue.$axios.post('/notification', {}, {params: item})
+      Vue.$axios.post('/rooms', {}, {params: item})
         .then((response) => {
           if (response.data && response.data.status === 200) {
-            commit(types.CREATE, response.data.notification)
-            resolve(response.data.notification[this.state.notifications.primaryKey])
+            commit(types.CREATE, response.data.room)
+            resolve(response.data.room[this.state.rooms.primaryKey])
           } else {
-            reject(new Error('An error occurred while creating a new notification.'))
+            reject(new Error('An error occurred while creating a new room.'))
           }
         })
         .catch((error) => {
@@ -60,12 +60,12 @@ export default {
   },
   update ({ commit, getters, rootState }, item) {
     return new Promise((resolve, reject) => {
-      Vue.$axios.put('/notification', {}, {params: item})
+      Vue.$axios.put('/rooms', {}, {params: item})
         .then((response) => {
           if (response.data && response.data.status === 200) {
             resolve()
           } else {
-            reject(new Error('An error occurred while updating notification' + item[this.state.notifications.primaryKey] + ' .'))
+            reject(new Error('An error occurred while updating room' + item[this.state.rooms.primaryKey] + ' .'))
           }
         })
         .catch((error) => {
@@ -73,14 +73,14 @@ export default {
         })
     })
   },
-  delete ({ commit, getters, rootState }, id) {
+  delete ({ commit, getters, rootState }, address) {
     return new Promise((resolve, reject) => {
-      Vue.$axios.delete('/notification', {params: {id}})
+      Vue.$axios.delete('/rooms', {params: {address}})
         .then((response) => {
           if (response.data && response.data.status === 200) {
             resolve()
           } else {
-            reject(new Error('An error occurred while deleting notification' + id + ' .'))
+            reject(new Error('An error occurred while deleting room' + address + ' .'))
           }
         })
         .catch((error) => {
