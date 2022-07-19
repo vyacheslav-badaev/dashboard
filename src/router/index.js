@@ -12,6 +12,8 @@ import NotificationsOverview from '@/components/pages/Notifications/Overview'
 import NotificationsDetail from '@/components/pages/Notifications/Detail'
 import RoomsOverview from '@/components/pages/Rooms/Overview'
 import RoomsDetail from '@/components/pages/Rooms/Detail'
+import RoomscalenderOverview from '@/components/pages/RoomsCalender/Overview'
+import RoomscalenderDetail from '@/components/pages/RoomsCalender/Detail'
 import Demo from '@/components/Demo'
 Vue.use(Router)
 const router = new Router({
@@ -69,6 +71,16 @@ const router = new Router({
             {path: '', name: 'RoomsOverview', component: RoomsOverview, meta: { requiresAuth: true }},
             {path: 'new', name: 'RoomsCreate', component: RoomsDetail, meta: { requiresAuth: true }},
             {path: ':id', name: 'RoomsDetails', component: RoomsDetail, meta: { requiresAuth: true }}
+          ]
+        },
+        {
+          path: '/roomscalender',
+          component: EmptyLayout,
+          meta: { requiresAuth: true },
+          children: [
+            {path: '', name: 'RoomscalenderOverview', component: RoomscalenderOverview, meta: { requiresAuth: true }},
+            {path: 'new', name: 'RoomscalenderCreate', component: RoomscalenderDetail, meta: { requiresAuth: true }},
+            {path: ':id', name: 'RoomscalenderDetails', component: RoomscalenderDetail, meta: { requiresAuth: true }}
           ]
         }
       ]
