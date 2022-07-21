@@ -6,14 +6,14 @@ export default () => ({
   ],
   toolbarTitle: '',
   toolbarButtons: [],
+  snackbarMessage: '',
   navigationTitle: 'Spartan Dashboard',
   navigationItems: [
     { title: 'Dashboard', icon: 'dashboard', link: '/' },
-    { title: 'Calender', icon: 'view_day', link: '/calender' },
     { title: 'Schedule', icon: 'today', link: '/schedule' },
     { title: 'Notifications', icon: 'contact_support', link: '/notifications' },
-    { title: 'Rooms', icon: 'contact_support', link: '/rooms' },
-    { title: 'Rooms Calenders', icon: 'contact_support', link: '/roomscalender' }
+    { title: 'Rooms', icon: 'meeting_room', link: '/rooms' },
+    { title: 'Rooms Calenders', icon: 'view_day', link: '/roomscalender' }
   ],
   DashboardOverviewToolbarTitle: 'Dashboard',
   ScheduleOverviewToolbarTitle: 'HR Schedule',

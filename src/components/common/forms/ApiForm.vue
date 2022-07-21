@@ -105,20 +105,29 @@ export default {
           .then((id) => {
             this.$router.push({name: this.collection.charAt(0).toUpperCase() + this.collection.slice(1) + 'Details', params: {id}})
           })
-                                    } else {
+          .catch((error) => {
+            this.$store.dispatch('ui/setSnackbarMessage', error.message)
+          })
+      } else {
         this.$store.dispatch(this.collection + '/update', this.item)
           .then(() => {
             this.editing = false
             this.refresh()
           })
-                                    }
+          .catch((error) => {
+            this.$store.dispatch('ui/setSnackbarMessage', error.message)
+          })
+      }
     },
     onDeleteButtonClick () {
       this.$store.dispatch(this.collection + '/delete', this.item[this.key])
         .then(() => {
           this.$router.push({name: this.collection.charAt(0).toUpperCase() + this.collection.slice(1) + 'Overview'})
         })
-                      },
+        .catch((error) => {
+          this.$store.dispatch('ui/setSnackbarMessage', error.message)
+        })
+    },
     resetButtons () {
       const self = this
       this.buttons.forEach(function (button) {

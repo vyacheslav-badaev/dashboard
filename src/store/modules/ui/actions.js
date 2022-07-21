@@ -8,5 +8,8 @@ export default {
   },
   removeToolbarButton ({ commit, getters, rootState }, button) {
     commit(types.REMOVE_TOOLBAR_BUTTON, button)
-  }
+  },
+  setSnackbarMessage ({ commit, getters, rootState }, message) {
+    commit(types.SET_SNACKBAR_MESSAGE, message)
+  },
 }

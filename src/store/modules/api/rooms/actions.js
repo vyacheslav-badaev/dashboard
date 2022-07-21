@@ -34,7 +34,7 @@ export default {
             }
             resolve()
           } else {
-            reject(new Error('An error occurred while retrieving room' + params.id + ' .'))
+            reject(new Error('An error occurred while retrieving room ' + params.id + ' .'))
           }
         })
         .catch((error) => {
@@ -65,7 +65,7 @@ export default {
           if (response.data && response.data.status === 200) {
             resolve()
           } else {
-            reject(new Error('An error occurred while updating room' + item[this.state.rooms.primaryKey] + ' .'))
+            reject(new Error('An error occurred while updating room ' + item[this.state.rooms.primaryKey] + ' .'))
           }
         })
         .catch((error) => {
@@ -80,7 +80,7 @@ export default {
           if (response.data && response.data.status === 200) {
             resolve()
           } else {
-            reject(new Error('An error occurred while deleting room' + address + ' .'))
+            reject(new Error('An error occurred while deleting room ' + address + ' .'))
           }
         })
         .catch((error) => {

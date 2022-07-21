@@ -34,7 +34,7 @@ export default {
             }
             resolve()
           } else {
-            reject(new Error('An error occurred while retrieving roomCalendar' + params.id + ' .'))
+            reject(new Error('An error occurred while retrieving roomCalendar ' + params.id + ' .'))
           }
         })
         .catch((error) => {
@@ -65,7 +65,7 @@ export default {
           if (response.data && response.data.status === String(200)) {
             resolve()
           } else {
-            reject(new Error('An error occurred while updating roomCalendar' + item[this.state.roomCalendar.primaryKey] + ' .'))
+            reject(new Error('An error occurred while updating roomCalendar ' + item[this.state.roomCalendar.primaryKey] + ' .'))
           }
         })
         .catch((error) => {
@@ -80,7 +80,7 @@ export default {
           if (response.data && response.data.status === String(200)) {
             resolve()
           } else {
-            reject(new Error('An error occurred while deleting roomCalendar' + id + ' .'))
+            reject(new Error('An error occurred while deleting roomCalendar ' + id + ' .'))
           }
         })
         .catch((error) => {

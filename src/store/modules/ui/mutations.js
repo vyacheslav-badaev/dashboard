@@ -9,5 +9,8 @@ export default {
   [types.REMOVE_TOOLBAR_BUTTON] (state, button) {
     const index = state.toolbarButtons.findIndex(_button => _button.id === button.id)
     if (index > -1) state.toolbarButtons.splice(index, 1)
+  },
+  [types.SET_SNACKBAR_MESSAGE] (state, messsage) {
+    state.snackbarMessage = messsage
   }
 }

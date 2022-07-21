@@ -34,7 +34,7 @@ export default {
             }
             resolve()
           } else {
-            reject(new Error('An error occurred while retrieving notification' + params.id + ' .'))
+            reject(new Error('An error occurred while retrieving notification ' + params.id + ' .'))
           }
         })
         .catch((error) => {
@@ -65,7 +65,7 @@ export default {
           if (response.data && response.data.status === 200) {
             resolve()
           } else {
-            reject(new Error('An error occurred while updating notification' + item[this.state.notifications.primaryKey] + ' .'))
+            reject(new Error('An error occurred while updating notification ' + item[this.state.notifications.primaryKey] + ' .'))
           }
         })
         .catch((error) => {
@@ -80,7 +80,7 @@ export default {
           if (response.data && response.data.status === 200) {
             resolve()
           } else {
-            reject(new Error('An error occurred while deleting notification' + id + ' .'))
+            reject(new Error('An error occurred while deleting notification ' + id + ' .'))
           }
         })
         .catch((error) => {
