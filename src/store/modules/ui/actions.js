@@ -11,5 +11,5 @@ export default {
   },
   setSnackbarMessage ({ commit, getters, rootState }, message) {
     commit(types.SET_SNACKBAR_MESSAGE, message)
-  },
+  }
 }
