@@ -20,7 +20,5 @@ export default () => ({
   NotificationsOverviewToolbarTitle: 'All Notifications',
   RoomsOverviewToolbarTitle: 'All Rooms',
   RoomsCalenderOverviewToolbarTitle: 'All Rooms Calenders',
-  CalenderOverviewToolbarTitle: 'All Calender Events',
-  TicketsOverviewToolbarTitle: 'All notification tickets',
   DemoToolbarTitle: 'Demo'
 })

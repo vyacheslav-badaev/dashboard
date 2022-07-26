@@ -5,8 +5,6 @@ import Login from '@/components/page/Login'
 import NotFound from '@/components/page/NotFound'
 import DashboardLayout from '@/components/layout/Dashboard'
 import EmptyLayout from '@/components/layout/Empty'
-import CalenderOverview from '@/components/pages/Calender/Overview'
-import CalenderDetail from '@/components/pages/Calender/Detail'
 import ScheduleOverview from '@/components/pages/Schedule/Overview'
 import NotificationsOverview from '@/components/pages/Notifications/Overview'
 import NotificationsDetail from '@/components/pages/Notifications/Detail'
@@ -34,16 +32,6 @@ const router = new Router({
           name: 'Demo',
           component: Demo,
           meta: { requiresAuth: true }
-        },
-        {
-          path: '/calender',
-          component: EmptyLayout,
-          meta: { requiresAuth: true },
-          children: [
-            {path: '', name: 'CalenderOverview', component: CalenderOverview, meta: { requiresAuth: true }},
-            {path: 'create', name: 'CalenderCreate', component: Demo, meta: { requiresAuth: true }},
-            {path: ':id', name: 'CalenderDetails', component: CalenderDetail, meta: { requiresAuth: true }}
-          ]
         },
         {
           path: '/schedule',

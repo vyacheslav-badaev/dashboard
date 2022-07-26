@@ -180,10 +180,11 @@ export default {
             this.lessons = lessons
             this.loading = false
           })
-          .catch(() => {
+          .catch((error) => {
             this.lessons = []
             this.loading = false
-                      })
+            this.$store.dispatch('ui/setSnackbarMessage', error.message)
+          })
       }
     },
     parseDate (date) {
@@ -193,7 +194,7 @@ export default {
     parseLatLongImage (room) {
       let latLong = room.latitude + ',' + room.longitude
       return 'https:    }
-                              },
+  },
   created () {
     this.$store.dispatch('ui/setToolbarTitle', this.$store.state.ui.ScheduleOverviewToolbarTitle)
   }
