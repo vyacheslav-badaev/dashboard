@@ -45,8 +45,9 @@ export default {
         .then(() => {
           this.loading = false
         })
-        .catch(() => {
+        .catch((error) => {
           this.loading = false
+          this.$store.dispatch('ui/setSnackbarMessage', error.message)
         })
     },
     onCreateNewButtonClick () {

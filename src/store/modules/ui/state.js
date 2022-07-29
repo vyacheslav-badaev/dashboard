@@ -15,7 +15,7 @@ export default () => ({
     { title: 'Rooms', icon: 'meeting_room', link: '/rooms' },
     { title: 'Rooms Calenders', icon: 'view_day', link: '/roomscalender' }
   ],
-  DashboardOverviewToolbarTitle: 'Dashboard',
+  DashboardToolbarTitle: 'Spartan Dashboard',
   ScheduleOverviewToolbarTitle: 'HR Schedule',
   NotificationsOverviewToolbarTitle: 'All Notifications',
   RoomsOverviewToolbarTitle: 'All Rooms',

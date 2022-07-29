@@ -11,4 +11,7 @@
   .font-pacifico{
     font-family: 'Pacifico', cursive;
   }
+  .font-frederica-the-great{
+    font-family: 'Fredericka the Great', cursive;
+  }
 </style>

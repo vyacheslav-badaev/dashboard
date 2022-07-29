@@ -5,6 +5,7 @@ import Login from '@/components/page/Login'
 import NotFound from '@/components/page/NotFound'
 import DashboardLayout from '@/components/layout/Dashboard'
 import EmptyLayout from '@/components/layout/Empty'
+import Dashboard from '@/components/pages/Dashboard/Main'
 import ScheduleOverview from '@/components/pages/Schedule/Overview'
 import NotificationsOverview from '@/components/pages/Notifications/Overview'
 import NotificationsDetail from '@/components/pages/Notifications/Detail'
@@ -12,7 +13,6 @@ import RoomsOverview from '@/components/pages/Rooms/Overview'
 import RoomsDetail from '@/components/pages/Rooms/Detail'
 import RoomscalenderOverview from '@/components/pages/RoomsCalender/Overview'
 import RoomscalenderDetail from '@/components/pages/RoomsCalender/Detail'
-import Demo from '@/components/Demo'
 Vue.use(Router)
 const router = new Router({
   routes: [
@@ -30,7 +30,7 @@ const router = new Router({
         {
           path: '/',
           name: 'Demo',
-          component: Demo,
+          component: Dashboard,
           meta: { requiresAuth: true }
         },
         {

@@ -43,6 +43,10 @@ export default {
     })
   },
   create ({ commit, getters, rootState }, item) {
+    if (item.macaddress) {
+      item.address = item.macaddress
+      delete item.macaddress
+    }
     return new Promise((resolve, reject) => {
       Vue.$axios.post('/rooms', {}, {params: item})
         .then((response) => {
@@ -59,6 +63,10 @@ export default {
     })
   },
   update ({ commit, getters, rootState }, item) {
+    if (item.macaddress) {
+      item.address = item.macaddress
+      delete item.macaddress
+    }
     return new Promise((resolve, reject) => {
       Vue.$axios.put('/rooms', {}, {params: item})
         .then((response) => {

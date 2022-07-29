@@ -173,7 +173,7 @@ export default {
     update () {
       let self = this
       this.lessons = []
-            if (this.room && this.startDate && this.endDate) {
+      if (this.room && this.startDate && this.endDate) {
         this.loading = true
         this.$store.dispatch('hr/getSchedule', {room: self.room, startDate: self.startDate, endDate: self.endDate})
           .then((lessons) => {
