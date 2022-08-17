@@ -9,7 +9,7 @@ import auth from './modules/auth'
 import hr from './modules/hr'
 import notifications from './modules/api/notifications'
 import rooms from './modules/api/rooms'
-import roomscalender from './modules/api/roomscalender'
+import calendar from './modules/api/calendar'
 Vue.use(Vuex)
 export default new Vuex.Store({
   state,
@@ -22,6 +22,6 @@ export default new Vuex.Store({
     hr,
     notifications,
     rooms,
-    roomscalender
+    calendar
   }
 })

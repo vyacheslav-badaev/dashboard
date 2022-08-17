@@ -12,7 +12,21 @@
             <v-subheader class="text-sm-left">{{column.text}}</v-subheader>
           </v-flex>
           <v-flex xs12 sm8>
-            <v-text-field v-if="editing && !column.readOnly" v-model="item[column.value]" :label="column.text" :value="item && item[key] ? item[column.value] : ''" ></v-text-field>
+            <v-date-picker
+              v-if="editing && !column.readOnly && column.type && column.type === 'date'"
+              v-model="item[column.value]"
+              :value="item && item[key] ? item[column.value] : ''"
+              class="mt-3"/>
+            <v-time-picker
+              v-if="editing && !column.readOnly && column.type && column.type === 'time'"
+              v-model="item[column.value]"
+              :value="item && item[key] ? item[column.value] : ''"
+              class="mt-3"/>
+            <v-text-field
+              v-else-if="editing && !column.readOnly"
+              v-model="item[column.value]"
+              :label="column.text"
+              :value="item && item[key] ? item[column.value] : ''"/>
             <v-subheader v-else-if="item" class="text-sm-right">{{item[column.value]}}</v-subheader>
           </v-flex>
         </v-layout>
@@ -21,6 +35,7 @@
   </v-card>
 </template>
 <script>
+import Moment from 'moment'
 export default {
   data () {
     return {
@@ -30,7 +45,6 @@ export default {
       editing: null,
       key: this.$store.state[this.collection].primaryKey,
       columns: this.$store.state[this.collection].columns,
-      data: {},
       buttons: [
         {
           id: this._uid + this.collection + 'editButton',
@@ -60,12 +74,23 @@ export default {
           flat: true,
           action: this.onSaveButtonClick
         }
-      ]
+      ],
+      defaultDate: new Moment().format('YYYY-MM-DD')
     }
   },
   computed: {
     item () {
-      return this.$store.state[this.collection].items.find(_item => String(_item[this.key]) === String(this.id)) || {}
+      console.log('create item')
+      let item = this.$store.state[this.collection].items.find(_item => String(_item[this.key]) === String(this.id))
+      if (item) {
+        return item
+      } else {
+        item = {}
+        if (this.columns.find((column) => (column.type && column.type === 'date'))) {
+          item[this.columns.find((column) => (column.type && column.type === 'date')).value] = this.defaultDate
+        }
+        return item
+      }
     }
   },
   props: {
@@ -86,11 +111,14 @@ export default {
     refresh () {
       this.loading = true
       this.$store.dispatch(this.collection + '/find', {id: this.id})
+        .catch((error) => {
+          this.$store.dispatch('ui/setSnackbarMessage', error.message)
+        })
         .finally(() => {
-          this.loading = false
           if (!this.item || (this.item && !this.item[this.key])) {
             this.$router.push({name: this.collection.charAt(0).toUpperCase() + this.collection.slice(1) + 'Create'})
           }
+          this.loading = false
         })
     },
     onEditButtonClick () {

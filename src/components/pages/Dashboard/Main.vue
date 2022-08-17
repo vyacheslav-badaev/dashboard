@@ -33,7 +33,7 @@
       <ApiCounter collection="rooms" color="red"/>
     </v-flex>
     <v-flex tile d-flex xs2>
-      <ApiCounter collection="roomscalender" color="green" name="Room Calender Events"/>
+      <ApiCounter collection="calendar" color="green" name="Room Calender Events"/>
     </v-flex>
     <v-flex tile d-flex xs12>
       <ApiLineChart collection="notifications" keyValue="timestamp"/>
@@ -57,10 +57,10 @@
       <ApiDoughnutChart collection="rooms" keyValue="humidity"/>
     </v-flex>
     <v-flex tile d-flex xs6>
-      <ApiBarChart collection="roomscalender" keyValue="creator"/>
+      <ApiBarChart collection="calendar" keyValue="subjectCode"/>
     </v-flex>
     <v-flex tile d-flex xs6>
-      <ApiBarChart collection="roomscalender" keyValue="room"/>
+      <ApiBarChart collection="calendar" keyValue="room"/>
     </v-flex>
   </v-layout>
 </template>

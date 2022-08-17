@@ -31,6 +31,7 @@
                     color="red accent-4"
                     prepend-icon="person"
                     v-model="username"
+                    :counter=10
                     :rules="usernameRules"
                     name="username"
                     label="Username"

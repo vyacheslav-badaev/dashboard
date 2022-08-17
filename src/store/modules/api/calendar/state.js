@@ -9,37 +9,40 @@ export default () => ({
       value: 'id'
     },
     {
-      text: 'subjectName',
+      text: 'Subject',
       sortable: true,
       readOnly: false,
       value: 'subjectName'
     },
     {
-      text: 'className',
+      text: 'Class',
       sortable: true,
       readOnly: false,
       value: 'className'
     },
     {
-      text: 'date',
-      sortable: true,
-      readOnly: true,
-      value: 'date'
-    },
-    {
-      text: 'startTime',
+      text: 'Date',
       sortable: true,
       readOnly: false,
-      value: 'startTime'
+      value: 'date',
+      type: 'date'
     },
     {
-      text: 'endTime',
+      text: 'Start time',
       sortable: true,
       readOnly: false,
-      value: 'endTime'
+      value: 'startTime',
+      type: 'time'
     },
     {
-      text: 'creator',
+      text: 'End time',
+      sortable: true,
+      readOnly: false,
+      value: 'endTime',
+      type: 'time'
+    },
+    {
+      text: 'Creator',
       sortable: true,
       readOnly: true,
       value: 'creator'
