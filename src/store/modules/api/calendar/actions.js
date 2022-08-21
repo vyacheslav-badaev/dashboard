@@ -26,7 +26,26 @@ export default {
     })
   },
   find ({ commit, dispatch, getters, rootState }, params) {
-    return dispatch('findBy', params)
+    return new Promise((resolve, reject) => {
+      if (!params.type) {
+        params.type = 'all'
+      }
+      Vue.$axios.get('/calendar/hint', {params})
+        .then((response) => {
+          if (response.data && response.data.status === String(200)) {
+            if (response.data.hintCalendar.id < 1000) {
+              response.data.hintCalendar.readOnly = true
+            }
+            commit(types.FIND, response.data.hintCalendar)
+            resolve()
+          } else {
+            reject(new Error('An error occurred while retrieving calendar ' + params.id + ' .'))
+          }
+        })
+        .catch((error) => {
+          reject(new Error('Webservice is currently not available. (' + error + ')'))
+        })
+    })
   },
   create ({ commit, getters, rootState }, item) {
     return new Promise((resolve, reject) => {

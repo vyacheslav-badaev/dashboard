@@ -80,9 +80,11 @@ export default {
   },
   computed: {
     item () {
-      console.log('create item')
       let item = this.$store.state[this.collection].items.find(_item => String(_item[this.key]) === String(this.id))
       if (item) {
+        if (item.hasOwnProperty('readOnly') && item.readOnly) {
+          this.resetButtons()
+        }
         return item
       } else {
         item = {}

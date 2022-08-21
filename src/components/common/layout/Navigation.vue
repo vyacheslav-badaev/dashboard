@@ -66,7 +66,7 @@ export default {
   name: 'Navigation',
   data () {
     return {
-      mini: true,
+      mini: false,
       loading: false,
       title: this.$store.state.ui.navigationTitle,
       username: this.$store.state.auth.username,
