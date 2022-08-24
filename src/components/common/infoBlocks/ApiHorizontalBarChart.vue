@@ -6,7 +6,10 @@
         <div>A horizontal bar chart distribution of {{keyValue}} from {{collection}}</div>
       </div>
     </v-card-title>
-    <v-card-text>
+    <v-card-text v-if="error">
+      {{ error }}
+    </v-card-text>
+    <v-card-text v-else>
       <HorizontalBarChart :chartData="data" :options="options"/>
     </v-card-text>
   </v-card>
@@ -24,6 +27,7 @@ export default {
       occurrence: [],
       backgroundColors: [],
       loading: false,
+      error: false,
       options: {responsive: true, maintainAspectRatio: false, legend: {display: false}},
       columns: this.$store.state[this.collection].columns
     }
@@ -62,12 +66,14 @@ export default {
   methods: {
     refresh () {
       this.loading = true
+      this.error = false
       this.$store.dispatch(this.collection + '/findBy', {})
         .then(() => {
           this.loading = false
         })
         .catch((error) => {
           this.loading = false
+          this.error = error.message
           this.$store.dispatch('ui/setSnackbarMessage', error.message)
         })
     },

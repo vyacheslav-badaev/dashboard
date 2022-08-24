@@ -1,6 +1,10 @@
 <template>
   <v-card :color="color" class="white--text" :to="collection">
-    <v-card-text v-if="!loading" class="text-xs-center">
+    <v-card-text v-if="error" class="text-xs-center">
+      <p class="display-4 font-frederica-the-great">X</p>
+      <p class="subheading">{{name ? name : collection.charAt(0).toUpperCase() + collection.slice(1)}}</p>
+    </v-card-text>
+    <v-card-text v-else-if="!loading" class="text-xs-center">
       <p class="display-4 font-frederica-the-great">{{this.items.length}}</p>
       <p class="subheading">{{name ? name : collection.charAt(0).toUpperCase() + collection.slice(1)}}</p>
     </v-card-text>
@@ -13,7 +17,8 @@
 export default {
   data () {
     return {
-      loading: false
+      loading: false,
+      error: false
     }
   },
   computed: {
@@ -38,18 +43,20 @@ export default {
   methods: {
     refresh () {
       this.loading = true
+      this.error = false
       this.$store.dispatch(this.collection + '/findBy', {})
         .then(() => {
           this.loading = false
         })
         .catch((error) => {
           this.loading = false
+          this.error = error.message
           this.$store.dispatch('ui/setSnackbarMessage', error.message)
         })
     }
   },
   created () {
-    if (this.items.length === 0) {
+    if (this.items.length < 1) {
       this.refresh()
     }
   }
