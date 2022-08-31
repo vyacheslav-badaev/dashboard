@@ -27,16 +27,18 @@ export default {
   },
   find ({ commit, dispatch, getters, rootState }, params) {
     return new Promise((resolve, reject) => {
-      if (!params.type) {
-        params.type = 'all'
+      let type = 'hint'
+      if (params.id && params.id < 1000) {
+        type = 'appointment'
       }
-      Vue.$axios.get('/calendar/hint', {params})
+      Vue.$axios.get('/calendar/' + type, {params})
         .then((response) => {
           if (response.data && response.data.status === String(200)) {
-            if (response.data.hintCalendar.id < 1000) {
-              response.data.hintCalendar.readOnly = true
+            let data = (type === 'hint') ? response.data.hintCalendar : response.data.appointment
+            if (type === 'hint') {
+              data.readOnly = true
             }
-            commit(types.FIND, response.data.hintCalendar)
+            commit(types.FIND, data)
             resolve()
           } else {
             reject(new Error('An error occurred while retrieving calendar ' + params.id + ' .'))

@@ -73,7 +73,8 @@ export default {
           if (response.data && response.data.status === 200) {
             resolve()
           } else {
-            reject(new Error('An error occurred while updating room ' + item[this.state.rooms.primaryKey] + ' .'))
+            console.log(item)
+            reject(new Error('An error occurred while updating room ' + item['address'] + ' .'))
           }
         })
         .catch((error) => {

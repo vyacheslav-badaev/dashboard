@@ -107,6 +107,11 @@ export default {
     collection: {
       type: String,
       required: true
+    },
+    userCanEdit: {
+      type: Boolean,
+      required: false,
+      default: true
     }
   },
   methods: {
@@ -169,20 +174,22 @@ export default {
     editing (newValue, oldValue) {
       const self = this
       this.resetButtons()
-      if (newValue) {
-        if (this.new) {
-          this.buttons.filter(button => button.title.includes('Save')).forEach(function (button) {
-            self.$store.dispatch('ui/addToolbarButton', button)
-          })
+      if (this.userCanEdit) {
+        if (newValue) {
+          if (this.new) {
+            this.buttons.filter(button => button.title.includes('Save')).forEach(function (button) {
+              self.$store.dispatch('ui/addToolbarButton', button)
+            })
+          } else {
+            this.buttons.filter(button => !button.title.includes('Edit')).forEach(function (button) {
+              self.$store.dispatch('ui/addToolbarButton', button)
+            })
+          }
         } else {
-          this.buttons.filter(button => !button.title.includes('Edit')).forEach(function (button) {
+          this.buttons.filter(button => button.title.includes('Edit')).forEach(function (button) {
             self.$store.dispatch('ui/addToolbarButton', button)
           })
         }
-      } else {
-        this.buttons.filter(button => button.title.includes('Edit')).forEach(function (button) {
-          self.$store.dispatch('ui/addToolbarButton', button)
-        })
       }
     }
   },

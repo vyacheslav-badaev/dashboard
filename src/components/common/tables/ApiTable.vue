@@ -36,6 +36,11 @@ export default {
     collection: {
       type: String,
       required: true
+    },
+    userCanCreate: {
+      type: Boolean,
+      required: false,
+      default: true
     }
   },
   methods: {
@@ -51,14 +56,16 @@ export default {
         })
     },
     onCreateNewButtonClick () {
-      this.$router.push({path: this.collection + '/new'})
+      this.$router.push({path: '/' + this.collection + '/new'})
     }
   },
   created () {
     const self = this
-    this.buttons.forEach(function (button) {
-      self.$store.dispatch('ui/addToolbarButton', button)
-    })
+    if (this.userCanCreate){
+      this.buttons.forEach(function (button) {
+        self.$store.dispatch('ui/addToolbarButton', button)
+      })
+    }
     this.refresh()
   },
   beforeDestroy () {
