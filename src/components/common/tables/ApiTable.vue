@@ -61,7 +61,7 @@ export default {
   },
   created () {
     const self = this
-    if (this.userCanCreate){
+    if (this.userCanCreate) {
       this.buttons.forEach(function (button) {
         self.$store.dispatch('ui/addToolbarButton', button)
       })
