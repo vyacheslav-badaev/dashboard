@@ -20,7 +20,6 @@ export default {
     state.type = payload.type
     Vue.$axios.defaults.params = {}
     Vue.$axios.defaults.params[ 'authKey' ] = state.key
-    console.log(Vue.$axios.defaults)
     localStorage.setItem('key', state.key)
     localStorage.setItem('username', state.username)
     localStorage.setItem('type', state.type)
