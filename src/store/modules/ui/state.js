@@ -13,7 +13,7 @@ export default () => ({
     { title: 'Schedule', icon: 'today', link: '/schedule' },
     { title: 'Notifications', icon: 'contact_support', link: '/notifications' },
     { title: 'Rooms', icon: 'meeting_room', link: '/rooms' },
-    { title: 'Calenders', icon: 'view_day', link: '/calendar' }
+    { title: 'Calendars', icon: 'view_day', link: '/calendar' }
   ],
   DashboardToolbarTitle: 'Spartan Dashboard',
   ScheduleOverviewToolbarTitle: 'HR Schedule',
